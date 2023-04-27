@@ -1,6 +1,13 @@
 import React from 'react';
 import GridSectionBlock from './GridSectionBlock';
 import ArticleCard from '../ArticleCard';
+import TagCard from '../TagCard';
+import IconTwitter from '../icons/IconTwitter';
+import IconFacebook from '../icons/IconFacebook';
+import IconInstagram from '../icons/IconInstagram';
+import IconFeed from '../icons/IconFeed';
+import SNSCard from '../SNSCard';
+import Avatar from '../Avatar';
 
 type Props = {};
 export interface IPost {
@@ -46,13 +53,60 @@ const posts: IPost[] = [
   },
 ];
 
+const TAGS = ['health', 'lifestyle', 'music', 'technology', 'travel', 'video'];
+
+export interface ISNS {
+  color: string;
+  icon: React.ReactNode;
+}
+const SNSs: ISNS[] = [
+  {
+    color: 'uTwitter',
+    icon: <IconTwitter />,
+  },
+  {
+    color: 'uFacebook',
+    icon: <IconFacebook />,
+  },
+  {
+    color: 'uInstagram',
+    icon: <IconInstagram />,
+  },
+  {
+    color: 'uFeed',
+    icon: <IconFeed />,
+  },
+];
 export default function GridSection({}: Props) {
   return (
-    <section className='grid'>
+    <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
       <GridSectionBlock title='Latest Articles'>
-        {posts.map((post: IPost) => (
-          <ArticleCard key={post.title} post={post} />
-        ))}
+        <div className='flex flex-col justify-between'>
+          {posts.map((post: IPost) => (
+            <ArticleCard key={post.title} post={post} />
+          ))}
+        </div>
+      </GridSectionBlock>
+      <GridSectionBlock title='Tag Cloud'>
+        <div className='w-full space-x-2 space-y-2'>
+          {TAGS.map((tag: string) => (
+            <TagCard key={tag} tag={tag} />
+          ))}
+        </div>
+      </GridSectionBlock>
+
+      <GridSectionBlock title='Follow Me!'>
+        <div className='w-full space-x-2 space-y-2'>
+          {SNSs.map((sns) => (
+            <SNSCard key={sns.color} sns={sns} />
+          ))}
+        </div>
+      </GridSectionBlock>
+
+      <GridSectionBlock title='About me'>
+        <div className='w-full'>
+          <Avatar />
+        </div>
       </GridSectionBlock>
     </section>
   );
