@@ -90,7 +90,7 @@ const SNSs: ISNS[] = [
 
 export default function SideBar({}: Props) {
   return (
-    <section className='grid grid-cols-1 border border-uRed w-[600px]'>
+    <section className='grid grid-cols-1 border border-uRed w-1/3'>
       <LatestArticlesBlock />
       <TagCloudBlock />
       <FollowMeBlock />

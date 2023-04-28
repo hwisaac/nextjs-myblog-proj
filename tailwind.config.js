@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-josefin)'],
-        serif: ['var(--font-source-serif-pro)'],
+        sans: ['var(--font-josefin)', 'var(--font-open-sans)'],
+        serif: ['var(--font-source-serif-pro)', 'var(--font-hahmlet)'],
       },
       colors: {
         uPrimary: '#4A4870',

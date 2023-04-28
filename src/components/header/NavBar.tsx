@@ -21,6 +21,9 @@ export default function NavBar({}: Props) {
           <Link href={item.href}>{item.name}</Link>
         </li>
       ))}
+      <li className='hover:text-uRed duration-200'>
+        <Link href={'/'}>{'TEST'}</Link>
+      </li>
     </ul>
   );
 }
