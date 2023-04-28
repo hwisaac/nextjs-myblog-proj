@@ -17,7 +17,7 @@ export default function NavBar({}: Props) {
   return (
     <ul className='font-serif flex bg-white shadow-md gap-5 w-fit mx-auto px-6 py-3  text-uPrimary font-medium'>
       {navList.map((item) => (
-        <li key={item.name}>
+        <li className='hover:text-uRed duration-200' key={item.name}>
           <Link href={item.href}>{item.name}</Link>
         </li>
       ))}

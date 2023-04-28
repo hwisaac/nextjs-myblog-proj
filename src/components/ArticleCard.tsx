@@ -5,8 +5,8 @@ type Props = { post: IPost };
 
 export default function ArticleCard({ post }: Props) {
   return (
-    <div className='flex h-20'>
-      <div className='w-[30%] h-full bg-slate-700'></div>
+    <div className='flex h-20 shrink-0 w-full'>
+      <div className='w-[25%] shrink-0 h-full bg-slate-700'></div>
       <div className='flex flex-col ml-3 justify-between pb-2'>
         <p className='w-full h-3/4 text-uPrimary font-semibold overflow-hidden '>
           {post.title}

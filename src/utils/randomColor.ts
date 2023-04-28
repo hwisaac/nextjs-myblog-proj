@@ -1,11 +1,11 @@
-export function randomColor(seed: string): string {
+export function randomTextColor(seed: string): string {
   const colors = [
-    '#1DA1F1',
-    '#165BEA',
-    '#EF00A1',
-    '#f26522',
-    '#FAC469',
-    '#65EBE7',
+    'text-[#1DA1F1]',
+    'text-[#165BEA]',
+    'text-[#EF00A1]',
+    'text-[#f26522]',
+    'text-[#FAC469]',
+    'text-[#65EBE7]',
   ];
   const index = Math.floor(Math.abs(hashCode(seed)) % colors.length);
   return colors[index];

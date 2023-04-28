@@ -7,8 +7,8 @@ import {
 } from 'next/font/google';
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
-import SideBar from '@/components/SideBar';
 import React from 'react';
+import SideBar from '@/components/sidebar/SideBar';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],

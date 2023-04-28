@@ -6,7 +6,7 @@ type Props = {};
 
 export default function Footer({}: Props) {
   return (
-    <footer className='border border-sky-700 max-w-5xl mx-auto'>
+    <footer className='max-w-7xl mx-auto'>
       <GridSection />
       <CopyrightSection />
     </footer>

@@ -6,8 +6,8 @@ type Props = {};
 
 export default function Avatar({}: Props) {
   return (
-    <div className='border h-full'>
-      <div className='flex px-2 gap-5 border mt-10 mb-6 items-center'>
+    <div className='h-full'>
+      <div className='flex px-2 gap-5 mt-10 mb-6 items-center'>
         <div className='border rounded-full w-[70px] h-[70px] bg-gray-200'></div>
         <div className='flex flex-col '>
           <h3 className='font-semibold text-uPrimary text-lg'>Jonathan Doe</h3>
