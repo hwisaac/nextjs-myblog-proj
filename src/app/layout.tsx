@@ -71,9 +71,7 @@ export default function RootLayout({
       <body className='bg-uBgColor'>
         <Header />
         <main className='flex border mx-auto max-w-6xl'>
-          <section className='border bg-yellow-400/40 w-2/3'>
-            {children}
-          </section>
+          <section className='border w-2/3'>{children}</section>
           <SideBar />
         </main>
         <Footer />

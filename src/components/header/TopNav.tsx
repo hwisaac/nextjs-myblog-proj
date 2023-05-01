@@ -1,10 +1,13 @@
 'use client';
 import useScrollY from '@/hooks/useScrollY';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BlogTitle from './BlogTitle';
 import Link from 'next/link';
+import { motion, useAnimate } from 'framer-motion';
 
-type Props = {};
+type Props = {
+  show: boolean;
+};
 
 const navList = [
   { name: 'Home', href: '/', subnav: [] },
@@ -16,26 +19,45 @@ const navList = [
   { name: 'Contact', href: '/contact', subnav: [] },
 ];
 
-export default function TopNav({}: Props) {
+const variants = {
+  initial: {
+    opacity: 0,
+    y: '-4rem',
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+};
+export default function TopNav({ show }: Props) {
   const scrollY = useScrollY();
   const handleClick = () => {};
-  return (
-    <div className='w-full fixed top-0 z-50 bg-white shadow-md'>
-      {scrollY > 400 && (
-        <div
-          className='w-full max-w-6xl  mx-auto flex justify-between items-center py-2'
-          onClick={handleClick}>
-          <BlogTitle size='small' />
+  const [scope, animate] = useAnimate();
 
-          <ul className='font-serif flex bg-white gap-5 w-fit px-6 py-3  text-uPrimary font-medium'>
-            {navList.map((item) => (
-              <li className='hover:text-uRed duration-200' key={item.name}>
-                <Link href={item.href}>{item.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+  return (
+    <>
+      {show && (
+        <motion.div
+          variants={variants}
+          initial='initial'
+          animate='animate'
+          transition={{ type: 'tween' }}
+          className='w-full fixed flex items-center top-0 z-50 bg-white shadow-md h-16 '>
+          <div
+            className='w-full max-w-6xl  mx-auto flex justify-between items-center py-2'
+            onClick={handleClick}>
+            <BlogTitle size='small' />
+
+            <ul className='font-serif flex bg-white gap-5 w-fit px-6 text-uPrimary font-medium'>
+              {navList.map((item) => (
+                <li className='hover:text-uRed duration-200' key={item.name}>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
       )}
-    </div>
+    </>
   );
 }

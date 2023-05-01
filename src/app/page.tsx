@@ -73,11 +73,14 @@ const posts: IPost[] = [
     image: '',
   },
 ];
+const slicedPosts = posts.slice(0, 3);
 
 export default function HomePage() {
   return (
-    <section>
-      <PostCard post={posts[0]} />
+    <section className='flex flex-col p-10 gap-14'>
+      {slicedPosts.map((post) => (
+        <PostCard key={post.title} post={post} />
+      ))}
     </section>
   );
 }

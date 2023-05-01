@@ -1,8 +1,11 @@
+'use client';
 import React from 'react';
 import { IPost } from './LatestArticlesBlock';
 import TagCard from './TagCard';
 import IconComment from './icons/IconComment';
 import IconLike from './icons/IconLike';
+import { motion } from 'framer-motion';
+import UnderlineHeading from './ui/UnderlineHeading';
 
 type Props = { post: IPost };
 
@@ -11,11 +14,13 @@ export default function PostCard({
   post: { title, date, comments, likes, description, categories, image },
 }: Props) {
   return (
-    <div className='flex flex-col border shadow-md bg-white px-10 py-8'>
+    <div className='flex flex-col shadow-md bg-white px-10 py-8 relative'>
       <div className='flex items-center gap-6'>
-        <div className='w-20 h-20 border bg-slate-100'>{/* image */}</div>
-        <div className='border text-uFontColor space-y-2'>
-          <h3 className='text-uPrimary font-bold text-2xl'>{title}</h3>
+        <div className='hidden sm:block w-24 h-24 bg-slate-100'>
+          {/* image */}
+        </div>
+        <div className='text-uFontColor space-y-2'>
+          <UnderlineHeading text={title} />
           <div className='flex gap-4 font-serif'>
             <span>{date}</span>
             <span className='flex items-center gap-2 hover:text-uRed cursor-pointer'>
@@ -33,6 +38,9 @@ export default function PostCard({
           <TagCard key={index} tag={tag} />
         ))}
       </div>
+      <button className='absolute px-5 h-10 -bottom-5 border bg-uPrimary text-white text-sm font-light left-[50%] -translate-x-[50%]'>
+        Continue Reading
+      </button>
     </div>
   );
 }

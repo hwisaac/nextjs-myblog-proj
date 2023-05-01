@@ -49,7 +49,7 @@ const posts: IPost[] = [
 export default function LatestArticlesBlock({}: Props) {
   return (
     <GridSectionBlock title='Latest Articles'>
-      <div className='flex flex-col justify-between gap-4'>
+      <div className='w-full flex flex-col justify-between gap-4'>
         {posts.map((post: IPost) => (
           <ArticleCard key={post.title} post={post} />
         ))}

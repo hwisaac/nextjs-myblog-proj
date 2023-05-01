@@ -1,14 +1,21 @@
-export function randomTextColor(seed: string): string {
-  const colors = [
-    'text-[#1DA1F1]',
-    'text-[#165BEA]',
-    'text-[#EF00A1]',
-    'text-[#f26522]',
-    'text-[#FAC469]',
-    'text-[#65EBE7]',
+export function randomColorBy(seed: string) {
+  const colorSet = [
+    { text: 'text-[#1DA1F1]', hoverText: 'hover:text-[#1DA1F1]' },
+    { text: 'text-[#165BEA]', hoverText: 'hover:text-[#165BEA]' },
+    { text: 'text-[#EF00A1]', hoverText: 'hover:text-[#EF00A1]' },
+    { text: 'text-[#f26522]', hoverText: 'hover:text-[#f26522]' },
+    { text: 'text-[#FAC469]', hoverText: 'hover:text-[#FAC469]' },
+    { text: 'text-[#65EBE7]', hoverText: 'hover:text-[#65EBE7]' },
   ];
-  const index = Math.floor(Math.abs(hashCode(seed)) % colors.length);
-  return colors[index];
+  const index = Math.floor(Math.abs(hashCode(seed)) % colorSet.length);
+  const pickedColor = colorSet[index];
+  // const text = `text-[${color}]`;
+  // const hoverText = `hover:text-[${color}]`;
+  // const colors = {
+  //   text: text,
+  //   hoverText: hoverText,
+  // };
+  return pickedColor;
 }
 
 // 문자열 해시코드를 반환하는 함수
