@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 type TSize = 'small' | 'normal';
 type Props = { text: string; size?: TSize };
-const headerVar = {
+
+const headerVariants = {
   initial: {
     borderBottomWidth: '0px',
   },
@@ -18,7 +19,7 @@ export default function UnderlineHeading({ text, size = 'normal' }: Props) {
     <motion.h3
       custom={size}
       transition={{ duration: 0.2 }}
-      variants={headerVar}
+      variants={headerVariants}
       initial='initial'
       whileHover='whileHover'
       className={classNameBy(size)}>

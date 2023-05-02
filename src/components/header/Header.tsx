@@ -12,9 +12,6 @@ type Props = {};
 export default function Header({}: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref);
-  useEffect(() => {
-    console.log(isInView);
-  }, [isInView]);
 
   return (
     <>

@@ -1,5 +1,8 @@
+'use client';
 import { IPost } from '@/components/LatestArticlesBlock';
 import PostCard from '@/components/PostCard';
+import PaginationNav from '@/components/PaginationNav';
+import { useState } from 'react';
 
 const posts: IPost[] = [
   {
@@ -73,14 +76,37 @@ const posts: IPost[] = [
     image: '',
   },
 ];
-const slicedPosts = posts.slice(0, 3);
+// const slicedPosts = posts.slice(0, 3);
 
 export default function HomePage() {
+  const pageLength = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+  const lastPage = Math.ceil(posts.length / pageLength);
+  const slicedPosts = paginate(posts, currentPage - 1);
+
   return (
     <section className='flex flex-col p-10 gap-14'>
       {slicedPosts.map((post) => (
         <PostCard key={post.title} post={post} />
       ))}
+      <PaginationNav
+        onNext={() => setCurrentPage((page) => page + 1)}
+        onPrev={() => setCurrentPage((page) => page - 1)}
+        currentPage={currentPage}
+        lastPage={lastPage}
+      />
     </section>
   );
 }
+
+const paginate = (posts: IPost[], page: number): IPost[] => {
+  if (page < 0 || page >= posts.length) return [];
+
+  const pageLength = 3;
+  const start = page * pageLength;
+  const end = start + pageLength;
+
+  const result = posts.slice(start, end);
+
+  return result;
+};
