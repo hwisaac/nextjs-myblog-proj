@@ -1,5 +1,5 @@
 import React from 'react';
-import PaginationBtn from './ui/PaginationBtn';
+import RedButton from './ui/RedButton';
 
 type Props = {
   onNext: () => void;
@@ -16,15 +16,11 @@ export default function PaginationNav({
 }: Props) {
   return (
     <div className='flex gap-3 items-center mx-auto'>
-      <PaginationBtn text='Prev' onClick={onPrev} hide={currentPage <= 1} />
+      <RedButton text='Prev' onClick={onPrev} hide={currentPage <= 1} />
       <span className='text-gray-400 font-serif mx-4'>
         Page {currentPage} of {lastPage}
       </span>
-      <PaginationBtn
-        text='Next'
-        onClick={onNext}
-        hide={currentPage >= lastPage}
-      />
+      <RedButton text='Next' onClick={onNext} hide={currentPage >= lastPage} />
     </div>
   );
 }

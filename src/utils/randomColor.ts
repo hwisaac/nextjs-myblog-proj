@@ -9,12 +9,7 @@ export function randomColorBy(seed: string) {
   ];
   const index = Math.floor(Math.abs(hashCode(seed)) % colorSet.length);
   const pickedColor = colorSet[index];
-  // const text = `text-[${color}]`;
-  // const hoverText = `hover:text-[${color}]`;
-  // const colors = {
-  //   text: text,
-  //   hoverText: hoverText,
-  // };
+
   return pickedColor;
 }
 

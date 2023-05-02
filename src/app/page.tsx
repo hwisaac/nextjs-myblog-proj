@@ -82,6 +82,7 @@ export default function HomePage() {
   const pageLength = 3;
   const [currentPage, setCurrentPage] = useState(1);
   const lastPage = Math.ceil(posts.length / pageLength);
+
   const slicedPosts = paginate(posts, currentPage - 1);
 
   return (
