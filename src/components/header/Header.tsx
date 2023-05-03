@@ -22,7 +22,7 @@ export default function Header({}: Props) {
           <BlogTitle />
           <SearchIcon />
         </div>
-        <div ref={ref}>
+        <div className='relative' ref={ref}>
           <NavBar />
         </div>
       </header>
