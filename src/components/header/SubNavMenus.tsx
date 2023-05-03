@@ -9,7 +9,7 @@ type Props = {
 export default function SubNavMenus({ subMenu }: Props) {
   return (
     <ul
-      className={`flex flex-col absolute top-[100%] border border-gray-50 shadow-sm bg-white h-fit w-fit min-w-[120px] z-10 py-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity`}>
+      className={`z-50 flex flex-col absolute top-[100%] border border-gray-50 shadow-sm bg-white h-fit w-fit min-w-[120px] py-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity`}>
       {subMenu.map(({ name, href }) => (
         <li key={name}>
           <Link

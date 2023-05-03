@@ -2,10 +2,8 @@ import './globals.css'
 import {
   Josefin_Sans,
   Source_Serif_Pro,
-  Noto_Sans,
   Nanum_Myeongjo,
   Open_Sans,
-  Noto_Serif_KR,
   Hahmlet,
   Song_Myung,
   Gowun_Batang,
@@ -14,6 +12,7 @@ import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import React from 'react';
 import SideBar from '@/components/sidebar/SideBar';
+import Slider from '@/components/priority/Slider';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],
@@ -27,11 +26,6 @@ const josefinSans = Josefin_Sans({
 const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
-});
-const nanumMyeongjo = Nanum_Myeongjo({
-  weight: ['400', '700', '800'],
-  subsets: ['latin'],
-  variable: '--font-nanum-myeongjo',
 });
 
 const hahmlet = Hahmlet({
@@ -70,6 +64,7 @@ export default function RootLayout({
       {/* <ThemeProvider defaultTheme='light' attribute='class'> */}
       <body className='bg-uBgColor'>
         <Header />
+        <Slider />
         <main className='flex border mx-auto max-w-6xl'>
           <section className='border w-2/3'>{children}</section>
           <SideBar />
