@@ -20,15 +20,17 @@ export default function UnderlineHeading({
   addClassName = '',
 }: Props) {
   return (
-    <motion.h3
-      custom={size}
-      transition={{ duration: 0.2 }}
-      variants={headerVariants}
-      initial='initial'
-      whileHover='whileHover'
-      className={`${classNameBy(size)} ${addClassName}`}>
-      {text}
-    </motion.h3>
+    <div>
+      <motion.h3
+        custom={size}
+        transition={{ duration: 0.2 }}
+        variants={headerVariants}
+        initial='initial'
+        whileHover='whileHover'
+        className={`${classNameBy(size)} ${addClassName}`}>
+        {text}
+      </motion.h3>
+    </div>
   );
 }
 

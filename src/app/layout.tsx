@@ -65,8 +65,8 @@ export default function RootLayout({
       <body className='bg-uBgColor'>
         <Header />
         <Slider />
-        <main className='flex border mx-auto max-w-6xl'>
-          <section className='border w-2/3'>{children}</section>
+        <main className='flex mx-auto max-w-6xl'>
+          <section className='w-2/3'>{children}</section>
           <SideBar />
         </main>
         <Footer />

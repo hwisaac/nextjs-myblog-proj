@@ -18,7 +18,7 @@ export default function SlideCard({ slide }: Props) {
           sizes='400px'
           fill
           priority
-          placeholder='blur'
+          // placeholder='blur'
           quality={50}
         />
       </div>

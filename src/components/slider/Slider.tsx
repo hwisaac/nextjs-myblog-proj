@@ -71,7 +71,7 @@ export default function Slider({}: Props) {
   };
 
   return (
-    <section className='w-full flex items-center border bg-white shadow-sm mx-auto max-w-6xl h-96 relative mb-16'>
+    <section className='w-full flex items-center border bg-white shadow-sm mx-auto max-w-6xl h-96 relative mb-20'>
       <AnimatePresence>
         <motion.div
           variants={divVariants}

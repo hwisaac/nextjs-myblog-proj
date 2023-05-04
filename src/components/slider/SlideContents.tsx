@@ -19,9 +19,12 @@ export default function SlideContents({ date, title, tags }: Props) {
           </span>
         ))}
       </p>
-      <p className='text-center'>
-        <UnderlineHeading text={title} addClassName='text-white' />
-      </p>
+
+      <UnderlineHeading
+        text={title}
+        addClassName='text-white text-center [text-shadow:_3px_3px_5px_rgba(0,0,0,0.5)]'
+      />
+
       <p className='text-2xl font-serif font-light'>
         {convertDateFormat(date)}
       </p>
