@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 type TSize = 'small' | 'normal';
-type Props = { text: string; size?: TSize };
+type Props = { text: string; size?: TSize; addClassName?: string };
 
 const headerVariants = {
   initial: {
@@ -14,7 +14,11 @@ const headerVariants = {
   }),
 };
 
-export default function UnderlineHeading({ text, size = 'normal' }: Props) {
+export default function UnderlineHeading({
+  text,
+  size = 'normal',
+  addClassName = '',
+}: Props) {
   return (
     <motion.h3
       custom={size}
@@ -22,7 +26,7 @@ export default function UnderlineHeading({ text, size = 'normal' }: Props) {
       variants={headerVariants}
       initial='initial'
       whileHover='whileHover'
-      className={classNameBy(size)}>
+      className={`${classNameBy(size)} ${addClassName}`}>
       {text}
     </motion.h3>
   );

@@ -12,7 +12,7 @@ import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import React from 'react';
 import SideBar from '@/components/sidebar/SideBar';
-import Slider from '@/components/priority/Slider';
+import Slider from '@/components/slider/Slider';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],
