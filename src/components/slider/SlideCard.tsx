@@ -15,6 +15,7 @@ export default function SlideCard({ slide }: Props) {
           src={image}
           alt={alt}
           className='object-cover w-full h-full z-20 saturate-50 brightness-75'
+          sizes='1150px'
           fill
           priority
         />

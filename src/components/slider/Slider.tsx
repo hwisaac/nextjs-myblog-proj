@@ -86,8 +86,8 @@ export default function Slider({}: Props) {
 
       <Circles
         visibleIndex={visibleIndex}
-        slidesLength={slides.length}
         setVisibleIndex={setVisibleIndex}
+        slidesLength={slides.length}
       />
       <SliderArrows onNext={onNext} onPrev={onPrev} />
     </section>

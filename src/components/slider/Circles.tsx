@@ -12,6 +12,7 @@ export default function Circles({
   slidesLength,
 }: Props) {
   const arr = new Array(slidesLength).fill(0);
+
   return (
     <div className='text-4xl z-50 absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3 items-center'>
       {arr.map((x, index) => (
