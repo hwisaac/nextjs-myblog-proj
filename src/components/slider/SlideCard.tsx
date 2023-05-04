@@ -18,6 +18,7 @@ export default function SlideCard({ slide }: Props) {
           sizes='1150px'
           fill
           priority
+          placeholder='blur'
         />
       </div>
       <SlideContents tags={tags} date={date} title={title} />
