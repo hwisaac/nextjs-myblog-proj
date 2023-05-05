@@ -4,6 +4,7 @@ import SlideCard from './SlideCard';
 import { AnimatePresence, motion } from 'framer-motion';
 import Circles from './Circles';
 import SliderArrows from './SliderArrows';
+import { usePathname } from 'next/navigation';
 
 export interface ISlide {
   image: string;
@@ -60,9 +61,10 @@ const divVariants = {
     transition: { duration: 1 },
   },
 };
-export default function Slider({}: Props) {
+export default function Slider() {
   const [visibleIndex, setVisibleIndex] = useState(0);
-
+  const pathname = usePathname();
+  if (pathname !== '/') return null;
   const onNext = () => {
     setVisibleIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };

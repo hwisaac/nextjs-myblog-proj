@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import IconChevron from '../icons/IconChevron';
 import SubNavMenus from './SubNavMenus';
+import { usePathname } from 'next/navigation';
+import PingCircle from '../ui/PingCircle';
 
 export interface IMenu {
   name: string;
@@ -18,9 +20,11 @@ type Props = {
 
 export default function NavMenu({ menu: { name, href, subMenu } }: Props) {
   const hasSubMenu = subMenu.length > 0;
+  const pathname = usePathname();
+  const isActive = href === '/' ? pathname === href : pathname.includes(href);
 
   return (
-    <li className='flex items-center group cursor-pointer h-full py-3'>
+    <li className='flex items-center group cursor-pointer h-full py-3 relative'>
       {hasSubMenu ? (
         <>
           <span className='group-hover:text-uRed duration-200'>{name}</span>
@@ -28,10 +32,13 @@ export default function NavMenu({ menu: { name, href, subMenu } }: Props) {
           <SubNavMenus subMenu={subMenu} />
         </>
       ) : (
-        <Link href={href} className='group-hover:text-uRed duration-200'>
+        <Link
+          href={href}
+          className='group-hover:text-uRed duration-200 relative'>
           {name}
         </Link>
       )}
+      {isActive && <PingCircle addClassName='top-3 -left-1' />}
     </li>
   );
 }

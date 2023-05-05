@@ -20,11 +20,11 @@ const navList = [
 ];
 
 const variants = {
-  initial: {
+  hide: {
     opacity: 0,
     y: '-4rem',
   },
-  animate: {
+  show: {
     opacity: 1,
     y: 0,
   },
@@ -35,29 +35,24 @@ export default function TopNav({ show }: Props) {
   const [scope, animate] = useAnimate();
 
   return (
-    <>
-      {show && (
-        <motion.div
-          variants={variants}
-          initial='initial'
-          animate='animate'
-          transition={{ type: 'tween' }}
-          className='w-full fixed flex items-center top-0 z-50 bg-white shadow-md h-16 '>
-          <div
-            className='w-full max-w-6xl  mx-auto flex justify-between items-center py-2'
-            onClick={handleClick}>
-            <BlogTitle size='small' />
+    <motion.div
+      variants={variants}
+      animate={show ? 'show' : 'hide'}
+      transition={{ type: 'tween' }}
+      className='w-full fixed flex items-center top-0 z-[100] bg-white shadow-md h-16 '>
+      <div
+        className='w-full max-w-6xl  mx-auto flex justify-between items-center p-2'
+        onClick={handleClick}>
+        <BlogTitle size='small' />
 
-            <ul className='font-serif flex bg-white gap-5 w-fit px-6 text-uPrimary font-medium'>
-              {navList.map((item) => (
-                <li className='hover:text-uRed duration-200' key={item.name}>
-                  <Link href={item.href}>{item.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
-      )}
-    </>
+        <ul className='font-serif flex bg-white gap-5 w-fit px-6 text-uPrimary font-medium'>
+          {navList.map((item) => (
+            <li className='hover:text-uRed duration-200' key={item.name}>
+              <Link href={item.href}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
   );
 }

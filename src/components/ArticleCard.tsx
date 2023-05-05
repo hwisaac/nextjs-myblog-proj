@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { IPost } from './footer/GridSection';
+
 import UnderlineHeading from './ui/UnderlineHeading';
+import { IPost } from '@/service/post';
 
 type Props = { post: IPost };
 

@@ -1,18 +1,20 @@
+import Link from 'next/link';
 import React from 'react';
 
 type Props = { size?: 'normal' | 'small' };
 
 export default function BlogTitle({ size = 'normal' }: Props) {
   return (
-    <p className={styleBySize(size)}>
+    <Link href='/' className={styleBySize(size)}>
       <strong className='text-uRed'>M</strong>aktub
-    </p>
+    </Link>
   );
 }
 
 function styleBySize(size: 'normal' | 'small') {
-  if (size === 'small') {
-    return 'font-bold text-4xl text-uPrimary';
-  }
-  return 'font-bold text-6xl text-uPrimary';
+  const animation = 'hover:-translate-y-1 transition-all duration-300 ease-out';
+  const base = 'font-bold text-uPrimary cursor-pointer';
+  const textSize = size === 'small' ? 'text-4xl' : 'text-6xl';
+
+  return [base, textSize, animation].join(' ');
 }

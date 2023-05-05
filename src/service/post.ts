@@ -1,8 +1,40 @@
-'use client';
-import PostCard from '@/components/PostCard';
-import PaginationNav from '@/components/PaginationNav';
-import { useState } from 'react';
-import { IPost } from '@/service/post';
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+export interface IPost {
+  title: string;
+  date: string;
+  comments: number;
+  likes: number;
+  description: string;
+  categories: string[];
+  image: string;
+  postId: string;
+}
+
+export interface IComment {
+  username: string;
+  email: string;
+  password: string;
+  content: string;
+  date: string;
+}
+
+export interface IPostData {
+  username: string;
+  title: string;
+  date: string;
+  content: string;
+  tags: string[];
+  comments: IComment[];
+}
+export const dummyComment: IComment = {
+  username: '유저네임',
+  email: 'abcd@naver.com',
+  password: '123123',
+  content: 'content ttttasdfasdf',
+  date: '3232-32-32',
+};
 
 const posts: IPost[] = [
   {
@@ -83,38 +115,21 @@ const posts: IPost[] = [
     postId: 'post07',
   },
 ];
-// const slicedPosts = posts.slice(0, 3);
 
-export default function HomePage() {
-  const pageLength = 3;
-  const [currentPage, setCurrentPage] = useState(1);
-  const lastPage = Math.ceil(posts.length / pageLength);
-
-  const slicedPosts = paginate(posts, currentPage - 1);
-
-  return (
-    <section className='flex flex-col p-10 gap-14'>
-      {slicedPosts.map((post) => (
-        <PostCard key={post.title} post={post} />
-      ))}
-      <PaginationNav
-        onNext={() => setCurrentPage((page) => page + 1)}
-        onPrev={() => setCurrentPage((page) => page - 1)}
-        currentPage={currentPage}
-        lastPage={lastPage}
-      />
-    </section>
-  );
+export async function getAllPosts(): Promise<IPost[]> {
+  return posts;
 }
 
-const paginate = (posts: IPost[], page: number): IPost[] => {
-  if (page < 0 || page >= posts.length) return [];
+export async function getPostData(postId: string): Promise<IPostData> {
+  const filePath = path.join(process.cwd(), 'data', 'posts', 'testMd.md');
+  const content = await readFile(filePath, 'utf-8');
 
-  const pageLength = 3;
-  const start = page * pageLength;
-  const end = start + pageLength;
-
-  const result = posts.slice(start, end);
-
-  return result;
-};
+  return {
+    username: '황이삭',
+    title: 'NextJS: 폰트 최적화',
+    date: '1234-12-34',
+    content,
+    tags: ['nextjs', 'font', 'optimization'],
+    comments: [dummyComment],
+  };
+}

@@ -3,7 +3,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 type TSize = 'small' | 'normal';
-type Props = { text: string; size?: TSize; addClassName?: string };
+type Props = {
+  text: string;
+  size?: TSize;
+  addClassName?: string;
+  textCenter?: boolean;
+};
 
 const headerVariants = {
   initial: {
@@ -18,9 +23,10 @@ export default function UnderlineHeading({
   text,
   size = 'normal',
   addClassName = '',
+  textCenter = false,
 }: Props) {
   return (
-    <div>
+    <div className={`${textCenter ? 'text-center' : ''}`}>
       <motion.h3
         custom={size}
         transition={{ duration: 0.2 }}

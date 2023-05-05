@@ -5,15 +5,6 @@ import FollowMeBlock from '../FollowMeBlock';
 import AboutMeBlock from '../AboutMeBlock';
 
 type Props = {};
-export interface IPost {
-  title: string;
-  date: string;
-  comments: number;
-  likes: number;
-  description: string;
-  categories: string[];
-  image: string;
-}
 
 
 

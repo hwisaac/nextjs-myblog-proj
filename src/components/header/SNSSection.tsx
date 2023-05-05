@@ -13,7 +13,9 @@ export default function SNSSection({}: Props) {
   return (
     <ul className='flex text-2xl gap-4 absolute left-0'>
       {SNS_ICONS.map((item, index) => (
-        <li key={index + item.color} className={`${item.color}`}>
+        <li
+          key={index + item.color}
+          className={`${item.color} cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-out`}>
           {item.icon}
         </li>
       ))}
