@@ -50,7 +50,7 @@ const SNSs: ISNS[] = [
 
 export default function SideBar({}: Props) {
   return (
-    <section className='flex flex-col w-1/3 h-full sticky top-16'>
+    <section className='hidden lg:flex flex-col w-1/3 h-full sticky top-16 shrink-0'>
       <LatestArticlesBlock />
       <TagCloudBlock />
       <FollowMeBlock />

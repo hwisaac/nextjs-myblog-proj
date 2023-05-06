@@ -66,7 +66,7 @@ export default function RootLayout({
         <Header />
         <Slider />
         <main className='flex mx-auto max-w-6xl'>
-          <section className='w-2/3'>{children}</section>
+          <section className='w-full mx-auto'>{children}</section>
           <SideBar />
         </main>
         <Footer />

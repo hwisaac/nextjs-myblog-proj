@@ -1,5 +1,5 @@
 import PostContent from '@/components/PostContent';
-import { getPostData } from '@/service/post';
+import { getNicoPostData, getPostData } from '@/service/post';
 import React from 'react';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 };
 export default async function test({ params: { slug } }: Props) {
   const post = await getPostData(slug);
-
+  // const post = await getNicoPostData(slug);
   return (
     <article className='overflow-hidden bg-white shadow-lg m-4'>
       <PostContent post={post} />

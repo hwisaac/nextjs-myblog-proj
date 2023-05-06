@@ -1,5 +1,8 @@
 import { readFile } from 'fs/promises';
 import path from 'path';
+import remarkHtml from 'remark-html';
+import remarkParse from 'remark-parse';
+import { unified } from 'unified';
 
 export interface IPost {
   title: string;
@@ -24,7 +27,7 @@ export interface IPostData {
   username: string;
   title: string;
   date: string;
-  content: string;
+  content: any;
   tags: string[];
   comments: IComment[];
 }
@@ -118,6 +121,24 @@ const posts: IPost[] = [
 
 export async function getAllPosts(): Promise<IPost[]> {
   return posts;
+}
+export async function getNicoPostData(postId: string): Promise<IPostData> {
+  const filePath = path.join(process.cwd(), 'data', 'posts', 'testMd.md');
+  const content = await readFile(filePath, 'utf-8');
+
+  const { value: html } = await unified()
+    .use(remarkParse)
+    .use(remarkHtml)
+    .process(content);
+
+  return {
+    username: '황이삭',
+    title: 'NextJS: 폰트 최적화',
+    date: '1234-12-34',
+    content: html,
+    tags: ['nextjs', 'font', 'optimization'],
+    comments: [dummyComment],
+  };
 }
 
 export async function getPostData(postId: string): Promise<IPostData> {

@@ -1,3 +1,140 @@
+
+# h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
+
+#### 강조 
+<em>em태그</em>
+
+<strong>strong태그</strong>
+
+<u>u태그</u>
+
+
+*별(기울기)*
+_언더바(기울기)_
+**별두개(강조)**
+__언더바 두개(강조)__
+
+**`oo11oo`**
+`**1oooo1**`
+#### ol목록
+1. 하나 `abcd`
+2. 둘 `1234가나다abcd`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+   1. 셋
+   2. 넷
+      1. 다섯
+      2. 여섯
+         1. 일곱aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+#### ul목록
+- 하나 `1234가나다abcd`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+- 둘
+  - 셋
+  - 넷
+    - 다섯
+    - 여섯
+      - 일곱
+
+#### 링크
+[Naver](https://www.naver.com)
+
+
+#### 코드
+`인라인 코드`
+
+```ts
+block code
+```
+
+#### table
+
+값 | 의미 | 기본값
+---|:---:|---:
+`static` | 유형(기준) 없음 / 배치 불가능 | `static`
+`relative` | 요소 **자신**을 기준으로 배치 |
+`absolute` | 위치 상 **_부모_(조상)요소**를 기준으로 배치 |
+`fixed` | **브라우저 창**을 기준으로 배치 |
+
+```md
+값 | 의미 | 기본값
+---|:---:|---:
+`static` | 유형(기준) 없음 / 배치 불가능 | `static`
+`relative` | 요소 **자신**을 기준으로 배치 |
+`absolute` | 위치 상 **_부모_(조상)요소**를 기준으로 배치 |
+`fixed` | **브라우저 창**을 기준으로 배치 |
+```
+#### 인용문
+```md
+> 남의 말이나 글에서 직접 또는 간접으로 따온 문장.
+> _(네이버 국어 사전)_
+
+BREAK!
+
+> 인용문을 작성하세요!`1234가나다abcd`
+>> 중첩된 인용문(nested blockquote)을 만들 수 있습니다.
+>>> 중중첩된 인용문 1
+>>> 중중첩된 인용문 2
+>>> 중중첩된 인용문 3
+```
+> 남의 말이나 글에서 직접 또는 간접으로 따온 문장.
+> _(네이버 국어 사전)_
+
+BREAK!
+
+> 인용문을 작성하세요!`1234가나다abcd`
+>> 중첩된 인용문(nested blockquote)을 만들 수 있습니다.
+>>> 중중첩된 인용문 1
+>>> 중중첩된 인용문 2
+>>> 중중첩된 인용문 3
+
+#### 수평선
+```md
+---
+(Hyphens)
+
+***
+(Asterisks)
+
+___
+(Underscores)
+```
+
+---
+(Hyphens)
+
+***
+(Asterisks)
+
+___
+(Underscores)
+
+#### 줄바꿈
+
+동해물과 백두산이 마르고 닳도록 
+하느님이 보우하사 우리나라 만세   <!--띄어쓰기 2번-->
+무궁화 삼천리 화려 강산br<br>
+대한 사람 대한으로 길이 보전하세
+
+엔터
+엔터
+엔터
+엔터
+
+엔터터
+
+엔터터
+
+
+
+
+
+hr
+<hr />
+
 `next/font`는 사용자 정의 폰트를 포함하여 모든 폰트 파일을 자동으로 최적화하고 개인 정보 보호와 성능 향상을 위해 외부 네트워크 요청을 제거합니다.
 
 > 🎥 영상 보기: `next/font` 사용 방법 알아보기 → [YouTube (6분)](https://www.youtube.com/watch?v=L8_98i_bMMA&ab_channel=LeeRobinson).

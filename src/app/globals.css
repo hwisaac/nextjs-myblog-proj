@@ -1,3 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-markdown-style h1,
+.custom-markdown-style h2,
+.custom-markdown-style h3,
+.custom-markdown-style h4,
+.custom-markdown-style h5,
+.custom-markdown-style h6 {
+  @apply text-uPrimary flex
+}
+
+.custom-markdown-style h1,
+.custom-markdown-style h2{
+  @apply border-b-2 pb-3 border-dashed font-bold items-center mb-12 mt-16
+}
+
+.custom-markdown-style h3,
+.custom-markdown-style h4,
+.custom-markdown-style h5,
+.custom-markdown-style h6{
+  @apply pl-3 font-semibold items-center mb-8 mt-12
+}
+
+.custom-markdown-style h1 {
+  @apply  text-5xl justify-center
+}
+.custom-markdown-style h2 {
+  @apply  text-4xl 
+}
+.custom-markdown-style h3 {
+  @apply  text-2xl border-b pb-2
+}
+
+.custom-markdown-style h4 {
+  @apply  text-2xl
+}
+.custom-markdown-style h5 {
+  @apply  text-xl
+}
+.custom-markdown-style h6 {
+  @apply  text-xl
+}
+
+
+.custom-markdown-style p,
+.custom-markdown-style li,
+.custom-markdown-style table {
+  @apply text-uFontColor
+}
+
+.custom-markdown-style p{
+  @apply my-4
+}
+/* 강조 */
+.custom-markdown-style strong {
+  @apply text-orange-500 font-semibold
+}
+/* 기울기 */
+
+
+/* 인라인코드 */
+.custom-markdown-style code {
+  @apply bg-gray-200 py-[0.12rem] px-2 rounded-md text-uRed
+}
+.custom-markdown-style p code,
+.custom-markdown-style em code,
+.custom-markdown-style th code,
+.custom-markdown-style td code,
+.custom-markdown-style strong code,
+.custom-markdown-style li code{
+  @apply text-sm
+}
+
+/* 코드블럭 */
+.custom-markdown-style pre div{
+  @apply rounded-md 
+}
+
+/*인용블럭*/
+.custom-markdown-style>blockquote {
+  @apply my-8
+}
+.custom-markdown-style blockquote {
+  @apply bg-gray-300/10 border-l-4 border-gray-300 pl-5 py-1 mx-2 font-serif rounded
+}
+
+/*링크*/
+.custom-markdown-style a {
+  @apply font-semibold text-sky-500 hover:text-purple-500 transition-colors active:text-red-500
+  hover:underline decoration-dashed underline-offset-2
+}
+
+/* 리스트 */
+.custom-markdown-style ul,
+.custom-markdown-style ol{
+  @apply list-outside ps-4
+}
+.custom-markdown-style ul {
+  @apply list-disc
+}
+.custom-markdown-style ol {
+  @apply list-decimal
+}
+
+.custom-markdown-style li::marker {
+  @apply font-bold text-gray-400/50 text-lg
+}
+
+/* 테이블 디자인 */
+.custom-markdown-style table {
+  @apply shadow-md rounded-lg overflow-hidden my-10
+}
+
+/* 테이블 헤더 */
+.custom-markdown-style table thead{
+  @apply rounded
+}
+.custom-markdown-style table thead tr{
+  @apply bg-uPrimary
+}
+.custom-markdown-style table thead tr th{
+  @apply text-white py-2 px-3 font-semibold
+}
+
+/* table body */
+.custom-markdown-style table tbody{}
+.custom-markdown-style table tbody tr:nth-child(2n){
+  @apply bg-uPrimary/5
+}
+.custom-markdown-style table tbody tr td{
+  @apply p-2 border
+}
