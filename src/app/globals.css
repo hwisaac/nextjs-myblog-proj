@@ -110,7 +110,7 @@
 
 /* 테이블 디자인 */
 .custom-markdown-style table {
-  @apply shadow-md rounded-lg overflow-hidden my-10
+  @apply shadow-lg rounded-tr-lg rounded-tl-lg overflow-hidden my-10 w-full
 }
 
 /* 테이블 헤더 */
@@ -124,10 +124,13 @@
   @apply text-white py-2 px-3 font-semibold
 }
 
-/* table body */
+/* 테이블 바디 */
 .custom-markdown-style table tbody{}
 .custom-markdown-style table tbody tr:nth-child(2n){
   @apply bg-uPrimary/5
+}
+.custom-markdown-style table tbody tr:last-child{
+  @apply border-b-2 border-uPrimary
 }
 .custom-markdown-style table tbody tr td{
   @apply p-2 border
