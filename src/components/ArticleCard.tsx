@@ -14,7 +14,7 @@ export default function ArticleCard({ post }: Props) {
       <div className='ml-3 justify-between pb-2 w-[75%]'>
         <UnderlineHeading text={post.title} size='small' />
         <span className='block font-serif h-1/4 text-gray-500 text-xs'>
-          {post.date}
+          {post.createdAt}
         </span>
       </div>
     </div>

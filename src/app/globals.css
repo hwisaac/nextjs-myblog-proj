@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-markdown-style {
+  @apply text-uFontColor
+}
 .custom-markdown-style h1,
 .custom-markdown-style h2,
 .custom-markdown-style h3,
 .custom-markdown-style h4,
 .custom-markdown-style h5,
 .custom-markdown-style h6 {
-  @apply text-uPrimary flex
+  @apply flex pl-3 text-uPrimary
 }
 
 .custom-markdown-style h1,
@@ -20,11 +23,11 @@
 .custom-markdown-style h4,
 .custom-markdown-style h5,
 .custom-markdown-style h6{
-  @apply pl-3 font-semibold items-center mb-8 mt-12
+  @apply font-semibold items-center mb-8 mt-12
 }
 
 .custom-markdown-style h1 {
-  @apply  text-5xl justify-center
+  @apply  text-4xl justify-center
 }
 .custom-markdown-style h2 {
   @apply  text-4xl 
@@ -47,7 +50,10 @@
 .custom-markdown-style p,
 .custom-markdown-style li,
 .custom-markdown-style table {
-  @apply text-uFontColor
+  @apply font-serif
+}
+.custom-markdown-style p,
+.custom-markdown-style li{
 }
 
 .custom-markdown-style p{
@@ -83,7 +89,7 @@
   @apply my-8
 }
 .custom-markdown-style blockquote {
-  @apply bg-gray-300/10 border-l-4 border-gray-300 pl-5 py-1 mx-2 font-serif rounded
+  @apply bg-gray-300/10 border-l-4 border-gray-300 pl-5 py-1 mx-2 font-serif rounded shadow-md
 }
 
 /*링크*/
@@ -95,27 +101,79 @@
 /* 리스트 */
 .custom-markdown-style ul,
 .custom-markdown-style ol{
-  @apply list-outside ps-4
+  @apply list-outside
 }
+/* unordered list */
 .custom-markdown-style ul {
-  @apply list-disc
+  @apply list-none ml-8 mt-4;
 }
-.custom-markdown-style ol {
-  @apply list-decimal
+.custom-markdown-style>ul {
+  @apply ml-10
+}
+.custom-markdown-style ul li{
+  @apply relative mb-4 
+}
+.custom-markdown-style ul li:before{
+  content: "";
+  @apply absolute flex w-[6px] h-[6px] -left-4 top-2 rounded-full bg-gray-300
+}
+.custom-markdown-style ul ul li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
+}
+.custom-markdown-style ul ul ul li:before{
+  @apply border-gray-300 bg-gray-300
+}
+.custom-markdown-style ul ul ul ul li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
+}
+.custom-markdown-style ul ul ul ul ul li:before{
+  @apply border-gray-300 bg-gray-300
+}
+.custom-markdown-style ul ul ul ul ul ul li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
 }
 
-.custom-markdown-style li::marker {
-  @apply font-bold text-gray-400/50 text-lg
+/* ordered list  */
+.custom-markdown-style ol {
+  counter-reset: list-counter;
+  @apply list-none ml-8 mt-4
 }
+.custom-markdown-style>ol {
+  @apply ml-10
+}
+.custom-markdown-style ol li{
+  @apply relative mb-4
+}
+.custom-markdown-style ol li:before{
+  content: counter(list-counter);
+  counter-increment: list-counter;
+  @apply flex justify-center w-5 h-5 leading-5 font-black absolute -left-7 top-0 text-white border border-gray-300 bg-gray-300
+}
+.custom-markdown-style ol ol li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
+}
+.custom-markdown-style ol ol ol li:before{
+  @apply border-gray-300 bg-gray-300
+}
+.custom-markdown-style ol ol ol ol li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
+}
+.custom-markdown-style ol ol ol ol ol li:before{
+  @apply border-gray-300 bg-gray-300
+}
+.custom-markdown-style ol ol ol ol ol ol li:before{
+  @apply border-uFontColor/90 bg-uFontColor/90
+}
+
+
 
 /* 테이블 디자인 */
 .custom-markdown-style table {
-  @apply shadow-lg rounded-tr-lg rounded-tl-lg overflow-hidden my-10 w-full
+  @apply shadow-lg rounded-tr-lg rounded-tl-lg overflow-hidden my-10 mx-auto
 }
 
 /* 테이블 헤더 */
 .custom-markdown-style table thead{
-  @apply rounded
 }
 .custom-markdown-style table thead tr{
   @apply bg-uPrimary

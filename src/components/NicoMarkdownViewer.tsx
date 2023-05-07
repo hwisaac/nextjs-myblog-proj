@@ -1,6 +1,6 @@
 'use client';
 
-export default function CustomMarkdownViewer({ content }: { content: string }) {
+export default function NicoMarkdownViewer({ content }: { content: string }) {
   return (
     <div
       className='custom-markdown-style'

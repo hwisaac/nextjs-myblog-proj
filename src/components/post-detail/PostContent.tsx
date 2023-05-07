@@ -1,5 +1,4 @@
 import React from 'react';
-import MarkdownViewer from '@/components/MarkdownViewer';
 import { IPostData } from '@/service/post';
 import CustomMarkdownViewer from './CustomMarkdownViewer';
 
@@ -8,10 +7,17 @@ type Props = {
 };
 
 export default function PostContent({ post }: Props) {
-  const { title, username, date, content, tags, comments } = post;
+  const {
+    title,
+    author: { username, name, email, image, posts },
+    createdAt,
+    content,
+    tags,
+    comments,
+  } = post;
 
   return (
-    <section className='flex flex-col p-10'>
+    <section className='flex flex-col p-10 max-w-4xl overflow-hidden'>
       <CustomMarkdownViewer content={content} />
       {/* <MarkdownViewer content={content} /> */}
     </section>

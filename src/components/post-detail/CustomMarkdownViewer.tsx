@@ -5,7 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Image from 'next/image';
 
-export default function MarkdownViewer({ content }: { content: string }) {
+export default function CustomMarkdownViewer({ content }: { content: string }) {
   return (
     <ReactMarkdown
       className='custom-markdown-style max-w-none'
