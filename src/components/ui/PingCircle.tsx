@@ -6,11 +6,11 @@ type Props = {
 
 export default function PingCircle({ addClassName }: Props) {
   return (
-    <div className={`absolute ${addClassName}`}>
+    <div className={`absolute opacity-70 ${addClassName}`}>
       <div
-        className={`h-1 w-1 rounded-full absolute bg-uSkyBlue animate-ping`}
+        className={`h-2 w-2 rounded-full absolute bg-uSkyBlue animate-ping`}
       />
-      <div className={`h-1 w-1 rounded-full absolute bg-uSkyBlue`} />
+      <div className={`h-2 w-2 rounded-full absolute bg-uSkyBlue`} />
     </div>
   );
 }

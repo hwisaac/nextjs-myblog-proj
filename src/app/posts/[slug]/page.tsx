@@ -1,9 +1,10 @@
 import CategorySection from '@/components/post-detail/CategorySection';
 import CommentsArticle from '@/components/post-detail/CommentsArticle';
 import CoverImage from '@/components/post-detail/CoverImage';
+import OtherPostsBlock from '@/components/post-detail/OtherPostsBlock';
 import PostContent from '@/components/post-detail/PostContent';
 import PostHead from '@/components/post-detail/PostHead';
-import { getPostData } from '@/service/post';
+import { dummyPost, getPostData } from '@/service/post';
 import React from 'react';
 
 type Props = {
@@ -23,7 +24,7 @@ export default async function test({ params: { slug } }: Props) {
 
   // const post = await getNicoPostData(slug);
   return (
-    <section className=''>
+    <section className='border'>
       <article className='overflow-hidden bg-white shadow-lg m-4'>
         <CoverImage image={image} />
         <PostHead
@@ -35,6 +36,7 @@ export default async function test({ params: { slug } }: Props) {
         <CategorySection tags={tags} />
       </article>
       <CommentsArticle comments={comments} />
+      <OtherPostsBlock prevPost={dummyPost} nextPost={dummyPost} />
     </section>
   );
 }

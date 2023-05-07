@@ -10,7 +10,7 @@ type Props = { post: IPost };
 
 const iconClassName = 'text-uRed';
 export default function PostCard({
-  post: { title, date, comments, likes, description, categories, image },
+  post: { title, createdAt, comments, likes, description, tags, image },
 }: Props) {
   return (
     <div className='flex flex-col shadow-md bg-white px-10 py-8 relative'>
@@ -21,7 +21,7 @@ export default function PostCard({
         <div className='text-uFontColor space-y-2'>
           <UnderlineHeading text={title} />
           <div className='flex gap-4 font-serif'>
-            <span>{date}</span>
+            <span>{createdAt}</span>
             <span className='flex items-center gap-2 hover:text-uRed cursor-pointer'>
               <IconComment className={iconClassName} /> {comments}
             </span>
@@ -33,7 +33,7 @@ export default function PostCard({
       </div>
       <p className='text-uFontColor mt-7 font-serif'>{description}</p>
       <div className='flex gap-2 mt-10'>
-        {categories.map((tag, index) => (
+        {tags.map((tag, index) => (
           <TagCard key={index} tag={tag} />
         ))}
       </div>

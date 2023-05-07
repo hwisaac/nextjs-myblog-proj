@@ -10,12 +10,13 @@ export default function PostHead({ title, createdAt, commentsLength }: Props) {
         {title}
       </h1>
       <div className='flex justify-center gap-5 font-serif text-uFontColor'>
-        <span>{createdAt}</span>
-        <div className='w-5 h-[2px] bg-uRed self-center' />
         <div className='flex items-center gap-1'>
           <span> {commentsLength}</span>
           <IconComment className='text-uRed relative -top-[2px]' />
         </div>
+        <div className='w-7 h-[2px] bg-gray-200 self-center' />
+
+        <span>{createdAt}</span>
       </div>
     </section>
   );

@@ -34,11 +34,11 @@ export default function NavMenu({ menu: { name, href, subMenu } }: Props) {
       ) : (
         <Link
           href={href}
-          className='group-hover:text-uRed duration-200 relative'>
+          className='group-hover:text-uRed duration-200 relative left-'>
           {name}
         </Link>
       )}
-      {isActive && <PingCircle addClassName='top-3 -left-1' />}
+      {isActive && <PingCircle addClassName='top-[0.6rem] -left-[0.6rem]' />}
     </li>
   );
 }
