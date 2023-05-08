@@ -4,15 +4,11 @@ import {
   Source_Serif_Pro,
   Open_Sans,
   Hahmlet,
-  Song_Myung,
-  Gowun_Batang,
 } from 'next/font/google';
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import React from 'react';
 import SideBar from '@/components/sidebar/SideBar';
-import Slider from '@/components/slider/Slider';
-import PortalKV from '@/components/PortalKV';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],
@@ -40,9 +36,9 @@ export const metadata = {
 
 const fontVariables = [
   josefinSans.variable,
-  // openSans.variable,
+  openSans.variable,
   sourceSerifPro.variable,
-  // hahmlet.variable,
+  hahmlet.variable,
 ].join(' ');
 
 export default function RootLayout({
@@ -51,10 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='ko' className={openSans.className}>
+    <html lang='ko' className={fontVariables}>
       <body className='bg-uBgColor selection:bg-uFontColor selection:text-white'>
         <Header />
-        <div id='portal' />
+        <div id='portal' className='max-w-6xl mx-auto' />
         <main className='flex mx-auto max-w-6xl'>
           <section className='w-full mx-auto'>{children}</section>
           <SideBar />

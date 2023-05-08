@@ -9,5 +9,6 @@ export default function PortalKV({ children }: Props) {
     return null;
   }
   const node = document.getElementById('portal') as Element;
+
   return reactDom.createPortal(children, node);
 }
