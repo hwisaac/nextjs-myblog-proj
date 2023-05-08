@@ -9,7 +9,7 @@ type Props = {
 export default function RedButton({ text, hide = false }: Props) {
   return (
     <button
-      className={`bg-uRed text-white py-1 px-3 shadow-md ${
+      className={`bg-uRed text-white py-2 px-6 shadow-md hover:brightness-105 ${
         hide ? 'hidden' : ''
       }`}>
       {text}

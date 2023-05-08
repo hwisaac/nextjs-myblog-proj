@@ -1,31 +1,34 @@
 'use client';
+import ContainerWithTitle from '@/components/contact/ContainerWithTitle';
 import RedButton from '@/components/ui/RedButton';
 import React from 'react';
 
 type Props = {};
 
-const pClassName = 'text-uPrimary font-semibold text-lg';
-const inputClassName = 'w-full border';
+const commonClassName =
+  'w-full border bg-uBgColor border-uPrimary/5 outline-uRed p-2 text-uFontColor';
+
+const inputClassName = [commonClassName, ''].join(' ');
+
+const textareaClassName = [commonClassName, ''].join(' ');
+
 export default function ContactPage({}: Props) {
   return (
-    <section className='bg-white shadow-lg'>
-      <div>
-        <p className={pClassName}>Your name</p>
+    <section className='flex flex-col bg-white shadow-lg space-y-4 px-10 py-14'>
+      <h1 className='text-uPrimary font-bold text-4xl mb-10'>Contact</h1>
+      <ContainerWithTitle title='Your name'>
         <input className={inputClassName} type='text' />
-      </div>
-      <div>
-        <p className={pClassName}>Your email</p>
+      </ContainerWithTitle>
+      <ContainerWithTitle title='Your email'>
         <input className={inputClassName} type='email' />
-      </div>
-      <div>
-        <p className={pClassName}>Subject</p>
+      </ContainerWithTitle>
+      <ContainerWithTitle title='Subject'>
         <input className={inputClassName} type='text' />
-      </div>
-      <div>
-        <p className={pClassName}>Your message (optional)</p>
-        <textarea rows={10} className='w-full border' />
-      </div>
-      <RedButton text='Submit' onClick={() => {}} />
+      </ContainerWithTitle>
+      <ContainerWithTitle title='Your message'>
+        <textarea rows={10} className={textareaClassName} />
+      </ContainerWithTitle>
+      <RedButton text='Submit' />
     </section>
   );
 }

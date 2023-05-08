@@ -3,6 +3,8 @@ import PostCard from '@/components/PostCard';
 import PaginationNav from '@/components/PaginationNav';
 import { useState } from 'react';
 import { IPost } from '@/service/post';
+import Slider from '@/components/slider/Slider';
+import PortalKV from '@/components/PortalKV';
 
 const posts: IPost[] = [
   {
@@ -94,6 +96,9 @@ export default function HomePage() {
 
   return (
     <section className='flex flex-col p-10 gap-14'>
+      <PortalKV>
+        <Slider />
+      </PortalKV>
       {slicedPosts.map((post) => (
         <PostCard key={post.title} post={post} />
       ))}

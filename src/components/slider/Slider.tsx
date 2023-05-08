@@ -63,8 +63,7 @@ const divVariants = {
 };
 export default function Slider() {
   const [visibleIndex, setVisibleIndex] = useState(0);
-  const pathname = usePathname();
-  if (pathname !== '/') return null;
+
   const onNext = () => {
     setVisibleIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };

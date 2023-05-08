@@ -12,6 +12,7 @@ import Footer from '@/components/footer/Footer';
 import React from 'react';
 import SideBar from '@/components/sidebar/SideBar';
 import Slider from '@/components/slider/Slider';
+import PortalKV from '@/components/PortalKV';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],
@@ -53,7 +54,7 @@ export default function RootLayout({
     <html lang='ko' className={openSans.className}>
       <body className='bg-uBgColor selection:bg-uFontColor selection:text-white'>
         <Header />
-        <Slider />
+        <div id='portal' />
         <main className='flex mx-auto max-w-6xl'>
           <section className='w-full mx-auto'>{children}</section>
           <SideBar />
