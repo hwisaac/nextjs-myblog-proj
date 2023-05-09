@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import IconTwitter from '../icons/IconTwitter';
 import IconFacebook from '../icons/IconFacebook';
@@ -7,6 +8,7 @@ import { MyColors } from '@/utils/color';
 import LatestArticlesBlock from '../LatestArticlesBlock';
 import TagCloudBlock from '../TagCloudBlock';
 import FollowMeBlock from '../FollowMeBlock';
+import { usePathname } from 'next/navigation';
 
 type Props = {};
 
@@ -49,6 +51,8 @@ const SNSs: ISNS[] = [
 ];
 
 export default function SideBar({}: Props) {
+  const pathname = usePathname();
+  if (pathname === '/tag') return null;
   return (
     <section className='hidden lg:flex flex-col w-1/3 h-full sticky top-16 shrink-0 px-10'>
       <LatestArticlesBlock />

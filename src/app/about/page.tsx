@@ -15,6 +15,7 @@ export default function AboutPage({}: Props) {
   return (
     <section className='w-full border flex flex-col gap-16 mb-10'>
       <MeWithPortal />
+
       <div
         className={`w-full grid grid-cols-2 grid-rows-[auto_auto_auto_auto] gap-x-6 gap-y-10 border bg-gray-200 box-content h-fit`}>
         <div className='w-full h-52 bg-green-400 border-uTwitter box-content'>

@@ -4,7 +4,6 @@ import SlideCard from './SlideCard';
 import { AnimatePresence, motion } from 'framer-motion';
 import Circles from './Circles';
 import SliderArrows from './SliderArrows';
-import { usePathname } from 'next/navigation';
 
 export interface ISlide {
   image: string;

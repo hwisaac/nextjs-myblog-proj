@@ -1,10 +1,10 @@
-import { IPost } from '@/service/post';
-import Slider from '@/components/slider/Slider';
 import PortalKV from '@/components/PortalKV';
-import PostsSection from '@/components/PostsSection';
-import MeWithPortal from '@/components/about/MeWithPortal';
-import SliderWithPortal from '@/components/SliderWithPortal';
+import PostCard from '@/components/PostCard';
+import TagHeading from '@/components/tag-page/TagHeading';
+import { IPost } from '@/service/post';
+import React from 'react';
 
+type Props = {};
 const posts: IPost[] = [
   {
     title: 'The spectacle before us was indeed sublime',
@@ -84,12 +84,17 @@ const posts: IPost[] = [
     postId: 'post07',
   },
 ];
-
-export default function HomePage() {
+export default function TagPage({}: Props) {
   return (
-    <section className='flex flex-col p-10 gap-14'>
-      <SliderWithPortal />
-      <PostsSection posts={posts} />
+    <section>
+      <PortalKV>
+        <TagHeading />
+      </PortalKV>
+      <div className='grid grid-cols-3 gap-10 my-20'>
+        {posts.map((post) => (
+          <PostCard key={post.title} post={post} size='small' />
+        ))}
+      </div>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import React from 'react';
 type Props = {
   text: string;
   hide?: boolean;
-  onClick?: () => void;
+  onClick?: any;
 };
 
 export default function RedButton({
