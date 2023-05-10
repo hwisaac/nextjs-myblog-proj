@@ -4,6 +4,7 @@ import remarkHtml from 'remark-html';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { IUser } from './user';
+import { client } from './sanity';
 
 export interface IPost {
   title: string;
@@ -148,7 +149,6 @@ export async function getNicoPostData(postId: string): Promise<IPostData> {
 
   return {
     author: {
-      username: 'hwisaac',
       name: '이삭',
       email: 'abcd@naver.com',
       image: '/',
@@ -169,7 +169,6 @@ export async function getPostData(postId: string): Promise<IPostData> {
 
   return {
     author: {
-      username: 'hwisaac',
       name: '이삭',
       email: 'abcd@naver.com',
       image: '',
@@ -182,4 +181,22 @@ export async function getPostData(postId: string): Promise<IPostData> {
     comments: [dummyComment],
     description: 'description',
   };
+}
+
+export async function getSanityPosts() {
+  return client.fetch(
+    `
+    *[_type == "post"&& author->name=="Darchive"]{
+      "title":title,
+      "description":description,
+      "name":name,
+      "image":"",
+      "tags":tags,
+      "postId": _id,
+      "createdAt": _createdAt,
+      "updatedAt":_updatedAt,
+      "comments": comments
+    }
+    `
+  );
 }

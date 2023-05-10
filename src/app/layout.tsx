@@ -9,6 +9,8 @@ import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import React from 'react';
 import SideBar from '@/components/sidebar/SideBar';
+import AuthContext from '@/context/AuthContext';
+import SWRConfigContext from '@/context/SWRConfigContext';
 
 const sourceSerifPro = Source_Serif_Pro({
   weight: ['200', '300', '400', '600', '700', '900'],
@@ -50,14 +52,18 @@ export default function RootLayout({
   return (
     <html lang='ko' className={fontVariables}>
       <body className='bg-uBgColor selection:bg-uFontColor selection:text-white'>
-        <Header />
-        <div id='portal' className='max-w-6xl mx-auto' />
-        <main className='flex mx-auto max-w-6xl'>
-          <section className='w-full mx-auto'>{children}</section>
-          <SideBar />
-          <div id='side-portal' />
-        </main>
-        <Footer />
+        <AuthContext>
+          <Header />
+          <SWRConfigContext>
+            <div id='portal' className='max-w-6xl mx-auto' />
+            <main className='flex mx-auto max-w-6xl'>
+              <section className='w-full mx-auto'>{children}</section>
+              <SideBar />
+              <div id='side-portal' />
+            </main>
+          </SWRConfigContext>
+          <Footer />
+        </AuthContext>
       </body>
     </html>
   );

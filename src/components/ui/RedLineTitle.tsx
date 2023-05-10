@@ -14,5 +14,6 @@ function h2ClassNameBy(size: string): string {
   const base = `flex text-2xl w-fit text-uPrimary mr-4`;
   const textSize = size === 'normal' ? `text-2xl` : 'text-4xl';
   const bold = size === 'normal' ? `font-semibold` : 'font-black';
+
   return [base, textSize, bold].join(' ');
 }
