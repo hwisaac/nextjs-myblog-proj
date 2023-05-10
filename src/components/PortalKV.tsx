@@ -1,15 +1,16 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import reactDom from 'react-dom';
 
 type Props = { children: React.ReactNode };
 
 export default function PortalKV({ children }: Props) {
-  // 아래와 같이 조건을 걸면 브라우저 환경일 때만 이 컴포넌트가 동작하게 된다.
-  const server = typeof window === 'undefined';
-  if (server) return null;
+  const [node, setNode] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setNode(document.getElementById('portal'));
+  }, []);
 
-  const node = document.getElementById('portal') as Element;
+  if (!node) return null;
 
   return reactDom.createPortal(children, node);
 }
