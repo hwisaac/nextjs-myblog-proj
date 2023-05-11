@@ -1,4 +1,5 @@
-import { addUser } from '@/service/user';
+import { getAllPostsOf } from '@/service/post';
+import { IUser, addUser } from '@/service/user';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -17,26 +18,19 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     // @ts-ignore
     async signIn({ user: { name, email, image }, expires }) {
-      console.log({ name, email, image });
       addUser({
-        username: name || '',
-        email: email || '',
         name: name || '',
+        email: email || '',
         image: image || '',
+        posts: [],
       });
       return true;
     },
     // @ts-ignore
     async session({ session }) {
       // const {name, email, image } = session.user
-      const user = session?.user || {};
-      const expires = session?.expires || {};
 
-      const modifiedSession = {
-        user: { ...user, username: user.email?.split('@') || '' },
-        expires,
-      };
-      return modifiedSession;
+      return session;
     },
   },
 };

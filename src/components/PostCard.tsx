@@ -5,14 +5,28 @@ import IconComment from './icons/IconComment';
 import IconLike from './icons/IconLike';
 import UnderlineHeading from './ui/UnderlineHeading';
 import { IPost } from '@/service/post';
+import convertDateFormat from '@/utils/convertDateFormat';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type Props = { post: IPost; size?: 'small' | 'normal' };
 
 const iconClassName = 'text-uRed';
 export default function PostCard({
-  post: { title, createdAt, comments, likes, description, tags, image },
+  post: {
+    title,
+    slug,
+    thumbnail,
+    createdAt,
+    updatedAt,
+    commentsLength,
+    description,
+    tags,
+    postId,
+  },
   size = 'normal',
 }: Props) {
+  const router = useRouter();
   return (
     <div className='flex flex-col shadow-md bg-white px-10 py-8 relative'>
       <div className='flex items-center gap-6'>
@@ -20,16 +34,15 @@ export default function PostCard({
           {/* image */}
         </div>
         <div className='text-uFontColor space-y-2'>
-          <UnderlineHeading text={title} size={size} />
+          <Link href={`/posts/${slug}`}>
+            <UnderlineHeading text={title} size={size} />
+          </Link>
           <div className='flex gap-4 font-serif'>
-            <span>{createdAt}</span>
+            <span>{convertDateFormat(createdAt)}</span>
             {size !== 'small' && (
               <>
                 <span className='flex items-center gap-2 hover:text-uRed cursor-pointer'>
-                  <IconComment className={iconClassName} /> {comments}
-                </span>
-                <span className='flex items-center gap-2 hover:text-uRed cursor-pointer '>
-                  <IconLike className={iconClassName} /> {likes}
+                  <IconComment className={iconClassName} /> {commentsLength}
                 </span>
               </>
             )}
@@ -45,7 +58,9 @@ export default function PostCard({
         ))}
       </div>
       {size === 'normal' && (
-        <button className='absolute px-5 h-10 -bottom-5 border bg-uPrimary text-white text-sm font-light left-[50%] -translate-x-[50%]'>
+        <button
+          className='absolute px-5 h-10 -bottom-5 border bg-uPrimary text-white text-sm font-light left-[50%] -translate-x-[50%]'
+          onClick={() => router.push(`/posts/${slug}`)}>
           Continue Reading
         </button>
       )}

@@ -4,8 +4,13 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function CustomMarkdownViewer({ content }: { content: string }) {
+  const [text, setText] = useState<string>('');
+  useEffect(() => {
+    setText(content);
+  }, [content]);
   return (
     <ReactMarkdown
       className='custom-markdown-style max-w-none'
@@ -37,7 +42,7 @@ export default function CustomMarkdownViewer({ content }: { content: string }) {
           />
         ),
       }}>
-      {content}
+      {text}
     </ReactMarkdown>
   );
 }

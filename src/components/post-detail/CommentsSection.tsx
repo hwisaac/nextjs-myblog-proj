@@ -36,7 +36,7 @@ export default function CommentsSection({ comments }: Props) {
     <section className='pb-16 px-10 '>
       <RedLineTitle title={'Comments'} />
       <div className='divide-y divide-dashed'>
-        {dummyComments.map((comment, index) => (
+        {comments.map((comment, index) => (
           <Comment key={`comment-${index}`} comment={comment} />
         ))}
       </div>

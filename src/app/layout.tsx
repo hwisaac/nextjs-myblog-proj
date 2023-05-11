@@ -53,16 +53,18 @@ export default function RootLayout({
     <html lang='ko' className={fontVariables}>
       <body className='bg-uBgColor selection:bg-uFontColor selection:text-white'>
         <AuthContext>
-          <Header />
           <SWRConfigContext>
+            <Header />
+
             <div id='portal' className='max-w-6xl mx-auto' />
             <main className='flex mx-auto max-w-6xl'>
               <section className='w-full mx-auto'>{children}</section>
               <SideBar />
               <div id='side-portal' />
             </main>
+
+            <Footer />
           </SWRConfigContext>
-          <Footer />
         </AuthContext>
       </body>
     </html>

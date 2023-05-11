@@ -41,7 +41,6 @@ export default function ContactPage({}: Props) {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('form >> ', form);
     sendContactEmail(form)
       .then(() => {
         setBanner({

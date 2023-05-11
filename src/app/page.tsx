@@ -1,11 +1,11 @@
-import { IPost } from '@/service/post';
+import { IPost, getAllPostsOf } from '@/service/post';
 import Slider from '@/components/slider/Slider';
 import PortalKV from '@/components/PortalKV';
 import PostsSection from '@/components/PostsSection';
 import MeWithPortal from '@/components/about/MeWithPortal';
 import SliderWithPortal from '@/components/SliderWithPortal';
 
-const posts: IPost[] = [
+const dummyPosts: IPost[] = [
   {
     title: 'The spectacle before us was indeed sublime',
     createdAt: '2019-01-01',
@@ -85,7 +85,8 @@ const posts: IPost[] = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getAllPostsOf(process.env.MY_EMAIL);
   return (
     <section className='flex flex-col p-10 gap-14'>
       <SliderWithPortal />
