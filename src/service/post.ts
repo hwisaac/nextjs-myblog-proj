@@ -79,19 +79,25 @@ export async function getPostDetail(
   slug: string
 ): Promise<IPostDetail> {
   if (!email) throw new Error('email 에러');
-
+  console.log(`${slug} ->디코딩: ${decodeSlug(slug)}`);
   const GROQ = `
   *[_type == "post" && slug == "${decodeSlug(
     slug
   )}" && author->email == "${email}"]{
-    ...,
     "author": {
       "name": author->name,
       "email": author->email,
       "iamge" : author->image,
     },
-    "createdAt":_createdAt,
-    "updatedAt":_updatedAt,
+    "title" : title,
+    "slug" : slug,
+    "thumbnail" : thumbnail,
+    "tags": tags,
+    "createdAt" : _createdAt,
+    "updatedAt" : _updatedAt,
+    "postId" : _id,
+    "comments" : comments,
+    "content" : content,
   }[0]
   `;
 
@@ -99,6 +105,7 @@ export async function getPostDetail(
     ...post,
     comments: post?.comments ?? [],
     tags: post?.tags ?? [],
+    thumbnail: post?.thumbnail ? urlFor(post.thumbnail) : null,
   }));
 }
 

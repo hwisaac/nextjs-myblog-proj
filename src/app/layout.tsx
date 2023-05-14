@@ -62,7 +62,6 @@ export default function RootLayout({
               <SideBar />
               <div id='side-portal' />
             </main>
-
             <Footer />
           </SWRConfigContext>
         </AuthContext>

@@ -96,7 +96,7 @@ export default function LatestArticlesBlock({}: Props) {
   return (
     <GridSectionBlock title='Latest Articles'>
       <div className='w-full flex flex-col justify-between gap-4'>
-        {posts.map((post: IPost) => (
+        {posts.slice(0, 3).map((post: IPost) => (
           <ArticleCard key={post.title} post={post} />
         ))}
       </div>

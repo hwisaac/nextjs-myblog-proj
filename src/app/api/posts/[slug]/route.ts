@@ -6,7 +6,6 @@ type Context = {
 };
 const email = process.env.MY_EMAIL || '';
 export async function GET(_: NextRequest, context: Context) {
-  console.log(`hi! Here is api/posts/${context.params.slug}`);
   const { slug } = context.params;
   const postDetail = await getPostDetail(email, slug) //
     .then((data) => NextResponse.json(data));

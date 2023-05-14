@@ -5,7 +5,6 @@ import OtherPostsBlock from '@/components/post-detail/OtherPostsBlock';
 import PostContent from '@/components/post-detail/PostContent';
 import PostHead from '@/components/post-detail/PostHead';
 import { IPostDetail, dummyPost, getPostDetail } from '@/service/post';
-import decodeSlug from '@/utils/decodeSlug';
 import React from 'react';
 import useSWR from 'swr';
 type Props = {
@@ -21,7 +20,7 @@ export default async function PostDetailPage({ params: { slug } }: Props) {
   // const post = await fetch(`/api/posts/nextjs-font-최적화`).then((res) =>
   //   res.json()
   // );
-  console.log('slug 페이지에서 post : ', post);
+  // console.log('slug 페이지에서 post : ', post);
   // const {
   //   data: post,
   //   isLoading,
