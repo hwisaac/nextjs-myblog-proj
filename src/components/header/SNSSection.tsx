@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { MdRssFeed } from 'react-icons/md';
@@ -19,6 +20,9 @@ export default function SNSSection({}: Props) {
           {item.icon}
         </li>
       ))}
+      <li>
+        <Link href='/posts/write'>write</Link>
+      </li>
     </ul>
   );
 }
