@@ -1,16 +1,20 @@
 'use client';
-import { IPost } from '@/service/post';
+import { IPost, getAllPostsOf } from '@/service/post';
 import React, { useState } from 'react';
 import PaginationNav from './PaginationNav';
 import PostCard from './PostCard';
+import useSWR from 'swr';
 
-type Props = { posts: IPost[] };
-export default function PostsSection({ posts }: Props) {
+type Props = {};
+export default function PostsSection({}: Props) {
+  const { data: posts } = useSWR<IPost[]>('/api/posts');
+  console.log(posts);
+
   const pageLength = 3;
   const [currentPage, setCurrentPage] = useState(1);
-  const lastPage = Math.ceil(posts.length / pageLength);
+  const lastPage = posts ? Math.ceil(posts.length / pageLength) : 0;
 
-  const slicedPosts = paginate(posts, currentPage - 1);
+  const slicedPosts = posts ? paginate(posts, currentPage - 1) : [];
 
   return (
     <>
