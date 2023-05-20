@@ -53,6 +53,7 @@ const SNSs: ISNS[] = [
 export default function SideBar({}: Props) {
   const pathname = usePathname();
   if (pathname === '/tag') return null;
+
   return (
     <section className='hidden lg:flex flex-col w-1/3 h-full sticky top-16 shrink-0 px-10'>
       <LatestArticlesBlock />

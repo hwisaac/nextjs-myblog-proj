@@ -1,11 +1,15 @@
+'use client';
 import React from 'react';
 import GridSectionBlock from './footer/GridSectionBlock';
 import TagCard from './TagCard';
+import useSWR from 'swr';
 
 type Props = {};
 const TAGS = ['health', 'lifestyle', 'music', 'technology', 'travel', 'video'];
 
 export default function TagCloudBlock({}: Props) {
+  const { data: posts } = useSWR('/api/posts');
+
   return (
     <GridSectionBlock title='Tag Cloud'>
       <div className='w-full space-x-2 space-y-2'>
