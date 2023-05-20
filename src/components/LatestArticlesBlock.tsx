@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
 import GridSectionBlock from './footer/GridSectionBlock';
 import ArticleCard from './ArticleCard';
 import { IPost, getAllPostsOf } from '@/service/post';
+import useSWR from 'swr';
 
 type Props = {};
 
@@ -138,12 +140,14 @@ const posts: IPost[] = [
   },
 ];
 
-export default async function LatestArticlesBlock() {
+export default function LatestArticlesBlock() {
   // const posts = await getAllPostsOf(process.env.MY_EMAIL);
+  const { data: posts } = useSWR<IPost[]>('/api/posts');
+
   return (
     <GridSectionBlock title='Latest Articles'>
       <div className='w-full flex flex-col justify-between gap-4'>
-        {posts.slice(0, 3).map((post: IPost) => (
+        {posts?.slice(0, 3).map((post: IPost) => (
           <ArticleCard key={post.title} post={post} />
         ))}
       </div>
