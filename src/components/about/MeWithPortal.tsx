@@ -20,7 +20,7 @@ export default function MeWithPortal({}: Props) {
           </div>
         </div>
         <p className='text-uFontColor max-w-md text-center'>
-          안녕하세요. 프론트엔드 개발자 황이삭입니다.
+          안녕하세요. 프론트엔드 개발자입니다.
         </p>
         <div className='flex items-center gap-4 '>
           <IconTwitter className='text-uTwitter' />

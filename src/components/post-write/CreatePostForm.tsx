@@ -16,14 +16,12 @@ const textareaClassName = [commonClassName, ''].join(' ');
 type Form = {
   title: string;
   content: string;
-  tags: string[];
   postImage: any;
 };
 
 const DEFAULT_DATA = {
   title: '',
   content: '',
-  tags: [],
   postImage: '',
 };
 export interface BannerData {
@@ -31,9 +29,11 @@ export interface BannerData {
   state: 'success' | 'error';
 }
 
-export default function WritePage({}: Props) {
+export default function CreatePostForm({}: Props) {
   const [form, setForm] = useState<Form>(DEFAULT_DATA);
   const [banner, setBanner] = useState<BannerData | null>(null);
+  const [tags, setTags] = useState<string[]>([]);
+  const [file, setFile] = useState<File>();
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -42,39 +42,36 @@ export default function WritePage({}: Props) {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('submitted');
+    console.log('form with tags >>', { ...form, tags });
   };
 
   return (
-    <section className='flex flex-col bg-white shadow-lg space-y-4 px-10 py-14'>
-      <h1 className='text-uPrimary font-bold text-4xl mb-10'>Write</h1>
-      <form onSubmit={onSubmit}>
-        <ContainerWithTitle title='Title'>
-          <input
-            className={inputClassName}
-            type='text'
-            id='title'
-            name='title'
-            value={form.title}
-            onChange={onChange}
-          />
-        </ContainerWithTitle>
-        <ContainerWithTitle title='Tags'>
-          <input className={inputClassName} type='text' id='tags' name='tags' />
-        </ContainerWithTitle>
-        <ContainerWithTitle title='Content'>
-          <textarea
-            rows={10}
-            className={textareaClassName}
-            id='content'
-            name='content'
-            value={form.content}
-            onChange={onChange}
-          />
-        </ContainerWithTitle>
-        <TagInput />
-        <RedButton text='Submit' />
-      </form>
-    </section>
+    <form className='space-y-4' onSubmit={onSubmit}>
+      <ContainerWithTitle title='Title'>
+        <input
+          className={inputClassName}
+          type='text'
+          id='title'
+          name='title'
+          value={form.title}
+          onChange={onChange}
+        />
+      </ContainerWithTitle>
+      <ContainerWithTitle title='Tags'>
+        <TagInput tags={tags} setTags={setTags} />
+      </ContainerWithTitle>
+      <ContainerWithTitle title='Content'>
+        <textarea
+          rows={10}
+          className={textareaClassName}
+          id='content'
+          name='content'
+          value={form.content}
+          onChange={onChange}
+        />
+      </ContainerWithTitle>
+
+      <RedButton text='Submit' />
+    </form>
   );
 }

@@ -1,9 +1,19 @@
 'use client';
 import createSlug from '@/utils/createSlug';
-import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
+import React, {
+  useState,
+  ChangeEvent,
+  KeyboardEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
-const TagInput: React.FC = () => {
-  const [tags, setTags] = useState<string[]>([]);
+interface Props {
+  tags: string[];
+  setTags: Dispatch<SetStateAction<string[]>>;
+}
+
+export default function TagInput({ tags, setTags }: Props) {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,6 +27,7 @@ const TagInput: React.FC = () => {
         setTags([...tags, newTag]);
       }
       setInputValue('');
+      console.log(tags);
     }
   };
   const handleTagRemove = (tagToRemove: string) => {
@@ -37,7 +48,7 @@ const TagInput: React.FC = () => {
         ))}
       </ul>
       <input
-        className='p-2 text-uFontColor bg-transparent outline-none'
+        className='p-2 text-uFontColor bg-transparent outline-none grow'
         type='text'
         value={inputValue}
         onChange={handleInputChange}
@@ -48,4 +59,3 @@ const TagInput: React.FC = () => {
   );
 };
 
-export default TagInput;

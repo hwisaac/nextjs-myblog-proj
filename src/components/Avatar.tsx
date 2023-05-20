@@ -25,7 +25,7 @@ export default function Avatar({}: Props) {
         </div>
       </div>
       <p className='text-gray-500 font-serif text-sm w-[90%] mx-auto leading-7'>
-        프론트엔드 개발자 황이삭입니다.
+        안녕하세요. 프론트엔드 개발자입니다.
       </p>
     </div>
   );

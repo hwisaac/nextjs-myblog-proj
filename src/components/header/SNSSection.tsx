@@ -22,9 +22,9 @@ export default function SNSSection({}: Props) {
       ))}
       <li>
         <Link
-          href='/posts/write'
+          href='/posts/create'
           className='border rounded bg-yellow-500/60 active:text-red-500'>
-          write
+          Create
         </Link>
       </li>
     </ul>
