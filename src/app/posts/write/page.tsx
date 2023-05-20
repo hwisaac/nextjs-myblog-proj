@@ -1,5 +1,6 @@
 'use client';
 import ContainerWithTitle from '@/components/contact/ContainerWithTitle';
+import TagInput from '@/components/post-write/TagInput';
 import RedButton from '@/components/ui/RedButton';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
@@ -13,17 +14,17 @@ const inputClassName = [commonClassName, ''].join(' ');
 const textareaClassName = [commonClassName, ''].join(' ');
 
 type Form = {
-  from: string;
-  subject: string;
-  message: string;
-  author: string;
+  title: string;
+  content: string;
+  tags: string[];
+  postImage: any;
 };
 
 const DEFAULT_DATA = {
-  from: '',
-  subject: '',
-  message: '',
-  author: '',
+  title: '',
+  content: '',
+  tags: [],
+  postImage: '',
 };
 export interface BannerData {
   message: string;
@@ -40,6 +41,7 @@ export default function WritePage({}: Props) {
   };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log('submitted');
   };
 
@@ -47,46 +49,30 @@ export default function WritePage({}: Props) {
     <section className='flex flex-col bg-white shadow-lg space-y-4 px-10 py-14'>
       <h1 className='text-uPrimary font-bold text-4xl mb-10'>Write</h1>
       <form onSubmit={onSubmit}>
-        <ContainerWithTitle title='Your name'>
+        <ContainerWithTitle title='Title'>
           <input
             className={inputClassName}
             type='text'
-            id='author'
-            name='author'
-            value={form.author}
+            id='title'
+            name='title'
+            value={form.title}
             onChange={onChange}
           />
         </ContainerWithTitle>
-        <ContainerWithTitle title='Your email'>
-          <input
-            className={inputClassName}
-            type='email'
-            id='from'
-            name='from'
-            value={form.from}
-            onChange={onChange}
-          />
+        <ContainerWithTitle title='Tags'>
+          <input className={inputClassName} type='text' id='tags' name='tags' />
         </ContainerWithTitle>
-        <ContainerWithTitle title='Subject'>
-          <input
-            className={inputClassName}
-            type='text'
-            id='subject'
-            name='subject'
-            value={form.subject}
-            onChange={onChange}
-          />
-        </ContainerWithTitle>
-        <ContainerWithTitle title='Your message'>
+        <ContainerWithTitle title='Content'>
           <textarea
             rows={10}
             className={textareaClassName}
-            id='message'
-            name='message'
-            value={form.message}
+            id='content'
+            name='content'
+            value={form.content}
             onChange={onChange}
           />
         </ContainerWithTitle>
+        <TagInput />
         <RedButton text='Submit' />
       </form>
     </section>

@@ -46,7 +46,7 @@ export default async function PostDetailPage({ params: { slug } }: Props) {
       {post && (
         <>
           <article className='overflow-hidden bg-white shadow-lg m-4'>
-            <CoverImage image={post.thumbnail} />
+            <CoverImage image={post.postImage} />
             <PostHead
               title={post.title}
               createdAt={post.createdAt}

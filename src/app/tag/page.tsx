@@ -15,7 +15,7 @@ const posts: IPost[] = [
     description:
       'Welcome, it’s great to have you here. We know that first impressions are important, so we’ve populated your new site with some initial getting started posts that will help you get familiar with everything in no time. This is the first one!…',
     tags: ['lifestyle', 'music'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post01',
   },
   {
@@ -27,7 +27,7 @@ const posts: IPost[] = [
     description:
       'In keeping with the biomedical perspective, early definitions of health focused on the theme of the body’s ability to function; health was seen as a state of normal function that could be disrupted from time to time by disease. An…',
     tags: ['health', 'travel'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post02',
   },
   {
@@ -39,7 +39,7 @@ const posts: IPost[] = [
     description:
       'The Ghost editor has everything you need to fully optimise your content. This is where you can add tags and authors, feature a post, or turn a post into a page. Access the post settings menu in the top right…',
     tags: ['travel'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post03',
   },
   {
@@ -51,7 +51,7 @@ const posts: IPost[] = [
     description:
       'Spain is home to some of the most stunning architecture in Europe, known throughout the world for its distinguishable form and famous historical monuments. With influences from the Romans to the Moors, you’ll find each city has a unique architectural…',
     tags: ['travel'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post04',
   },
   {
@@ -63,7 +63,7 @@ const posts: IPost[] = [
     description:
       'Achieving and maintaining health is an ongoing process, shaped by both the evolution of health care knowledge and practices as well as personal strategies and organized interventions for staying healthy. Diet An important way to maintain your personal health is to have…',
     tags: ['travel'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post05',
   },
   {
@@ -75,7 +75,7 @@ const posts: IPost[] = [
     description:
       'Each year, fine diners, restaurateurs and food writers—I’m in the last group—try to read the annual World’s 50 Best Restaurant list like tea leaves, searching for trends, or at the very least, a coherent theme. But as in previous years,…',
     tags: ['lifestyle'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post06',
   },
   {
@@ -87,7 +87,7 @@ const posts: IPost[] = [
     description:
       'Music is an art form and cultural activity whose medium is sound organized in time. General definitions of music include common elements such as pitch (which governs melody and harmony), rhythm (and its associated concepts tempo, meter, and articulation), dynamics…',
     tags: ['lifestyle', 'music'],
-    thumbnail: '',
+    postImage: '',
     postId: 'post07',
   },
 ];

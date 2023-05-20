@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function OtherPostCard({ post, type }: Props) {
-  const { title, thumbnail } = post;
+  const { title, postImage } = post;
   const isPrev = type === 'prev';
   return (
     <div

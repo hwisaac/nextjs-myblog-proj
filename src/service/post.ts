@@ -10,7 +10,7 @@ import decodeSlug from '@/utils/decodeSlug';
 export interface IPost {
   title: string;
   slug: string;
-  thumbnail: string | null;
+  postImage: string | null;
   description: string;
   tags: string[];
   postId: string;
@@ -35,7 +35,7 @@ export interface IPostDetail {
   };
   title: string;
   slug: string;
-  thumbnail: string;
+  postImage: string;
   tags: string[];
   postId: string;
   createdAt: string;
@@ -54,7 +54,7 @@ export const dummyComment: IComment = {
 export const dummyPost: IPost = {
   title: 'Top 10 old rock songs from the 80’s',
   slug: 'slug-test',
-  thumbnail: '',
+  postImage: '',
   description:
     'Music is an art form and cultural activity whose medium is sound organized in time. General definitions of music include common elements such as pitch (which governs melody and harmony), rhythm (and its associated concepts tempo, meter, and articulation), dynamics…',
   tags: ['lifestyle', 'music'],
@@ -91,7 +91,7 @@ export async function getPostDetail(
     },
     "title" : title,
     "slug" : slug,
-    "thumbnail" : thumbnail,
+    "postImage" : postImage,
     "tags": tags,
     "createdAt" : _createdAt,
     "updatedAt" : _updatedAt,
@@ -105,7 +105,7 @@ export async function getPostDetail(
     ...post,
     comments: post?.comments ?? [],
     tags: post?.tags ?? [],
-    thumbnail: post?.thumbnail ? urlFor(post.thumbnail) : null,
+    postImage: post?.postImage ? urlFor(post.postImage) : null,
   }));
 }
 
@@ -116,7 +116,7 @@ export async function getAllPostsOf(email?: string | null): Promise<IPost[]> {
       | order(_createdAt desc){
       "title":title,
       "slug":slug,
-      "thumbnail":thumbnail,
+      "postImage":postImage,
       "description":description,
       "tags":tags,
       "postId": _id,
@@ -130,7 +130,7 @@ export async function getAllPostsOf(email?: string | null): Promise<IPost[]> {
     posts.map((post: IPost) => ({
       ...post,
       tags: post.tags ?? [],
-      thumbnail: post.thumbnail ? urlFor(post.thumbnail) : null,
+      postImage: post.postImage ? urlFor(post.postImage) : null,
       commentsLength: post.commentsLength ?? 0,
     }))
   );

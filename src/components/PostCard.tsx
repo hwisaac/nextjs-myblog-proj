@@ -16,7 +16,7 @@ export default function PostCard({
   post: {
     title,
     slug,
-    thumbnail,
+    postImage,
     createdAt,
     updatedAt,
     commentsLength,
