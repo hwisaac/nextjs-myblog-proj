@@ -10,9 +10,9 @@ export default function Avatar({}: Props) {
       <div className='flex px-2 gap-5 mt-10 mb-6 items-center'>
         <div className='border rounded-full w-[70px] h-[70px] bg-gray-200'></div>
         <div className='flex flex-col '>
-          <h3 className='font-semibold text-uPrimary text-lg'>Jonathan Doe</h3>
+          <h3 className='font-semibold text-uPrimary text-lg'>황이삭</h3>
           <span className='font-serif text-sm text-neutral-500'>
-            Founder & Editor
+            FE Developer
           </span>
           <ul className='flex mt-3 gap-4'>
             <li className='text-uTwitter'>
@@ -25,9 +25,7 @@ export default function Avatar({}: Props) {
         </div>
       </div>
       <p className='text-gray-500 font-serif text-sm w-[90%] mx-auto leading-7'>
-        Hello! My name is Jonathan Doe working from Chile. I create some Ghost
-        and Wordpress themes for differents markets, also, i offer live support
-        via our ticket system.
+        프론트엔드 개발자 황이삭입니다.
       </p>
     </div>
   );

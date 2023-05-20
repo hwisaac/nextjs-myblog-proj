@@ -15,18 +15,12 @@ export default function MeWithPortal({}: Props) {
             className='w-16 h-16 bg-gray-200 rounded-full'
             id='my-profile-image'></div>
           <div className='flex flex-col gap-1 items-center'>
-            <span className='text-uPrimary font-bold text-2xl'>
-              Jonathan Doe
-            </span>
-            <span className='text-uFontColor text-sm'>
-              Collbaroator & Editor
-            </span>
+            <span className='text-uPrimary font-bold text-2xl'>황이삭</span>
+            <span className='text-uFontColor text-sm'>FE Developer</span>
           </div>
         </div>
-        <p className='font-serif text-uFontColor max-w-md text-center'>
-          Hello! My name is Jonathan Doe working from Chile. I create some Ghost
-          and Wordpress themes for differents markets, also, i offer live
-          support via our ticket system.
+        <p className='text-uFontColor max-w-md text-center'>
+          안녕하세요. 프론트엔드 개발자 황이삭입니다.
         </p>
         <div className='flex items-center gap-4 '>
           <IconTwitter className='text-uTwitter' />

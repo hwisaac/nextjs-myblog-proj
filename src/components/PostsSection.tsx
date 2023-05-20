@@ -18,8 +18,8 @@ export default function PostsSection({}: Props) {
 
   return (
     <>
-      {slicedPosts.map((post) => (
-        <PostCard key={post.title} post={post} />
+      {slicedPosts.map((post, index) => (
+        <PostCard key={`${post.title}-${index}`} post={post} />
       ))}
       <PaginationNav
         onNext={() => setCurrentPage((page) => page + 1)}
