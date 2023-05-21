@@ -3,6 +3,7 @@ import ContainerWithTitle from '@/components/contact/ContainerWithTitle';
 import TagInput from '@/components/post-write/TagInput';
 import RedButton from '@/components/ui/RedButton';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import ImageFileInput from './ImageFileInput';
 
 type Props = {};
 
@@ -70,7 +71,9 @@ export default function CreatePostForm({}: Props) {
           onChange={onChange}
         />
       </ContainerWithTitle>
-
+      <ContainerWithTitle title='Post Image'>
+        <ImageFileInput file={file} setFile={setFile} />
+      </ContainerWithTitle>
       <RedButton text='Submit' />
     </form>
   );

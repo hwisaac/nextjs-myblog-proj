@@ -3,11 +3,11 @@ import Image from 'next/image';
 import React, { DragEventHandler, useState } from 'react';
 
 type Props = {
-  file: File;
-  setFile: (value: React.SetStateAction<File | undefined>) => void;
+  file?: File;
+  setFile: React.Dispatch<React.SetStateAction<File | undefined>>;
 };
 
-export default function ImageInput({ file, setFile }: Props) {
+export default function ImageFileInput({ file, setFile }: Props) {
   const [dragging, setDragging] = useState(false);
 
   const handleDrag: DragEventHandler<HTMLLabelElement> = (e) => {
@@ -53,7 +53,7 @@ export default function ImageInput({ file, setFile }: Props) {
       {file && (
         <div className='relative w-full aspect-square'>
           <Image
-            className='object-covler'
+            className='object-cover'
             src={URL.createObjectURL(file)}
             alt='local file'
             fill
