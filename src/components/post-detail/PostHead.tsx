@@ -1,5 +1,6 @@
 import React from 'react';
 import IconComment from '../icons/IconComment';
+import convertDateFormat from '@/utils/convertDateFormat';
 
 type Props = { title: string; createdAt: string; commentsLength: number };
 
@@ -16,7 +17,7 @@ export default function PostHead({ title, createdAt, commentsLength }: Props) {
         </div>
         <div className='w-7 h-[2px] bg-gray-200 self-center' />
 
-        <span>{createdAt}</span>
+        <span>{convertDateFormat(createdAt)}</span>
       </div>
     </section>
   );

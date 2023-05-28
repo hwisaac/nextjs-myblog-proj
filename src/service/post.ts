@@ -81,7 +81,7 @@ export async function getPostDetail(
   slug: string
 ): Promise<IPostDetail> {
   if (!email) throw new Error('email 에러');
-  console.log(`${slug} ->디코딩: ${decodeSlug(slug)}`);
+
   const GROQ = `
   *[_type == "post" && slug == "${decodeSlug(
     slug
@@ -160,6 +160,7 @@ interface ICreatePostPayload {
   content: string;
   file: Blob;
 }
+
 export async function createPost(userId: string, payload: ICreatePostPayload) {
   const { title, tags, content, file } = payload;
 
@@ -178,7 +179,7 @@ export async function createPost(userId: string, payload: ICreatePostPayload) {
           _type: 'post',
           author: { _ref: userId },
           title,
-          slug: createSlug(title),
+          slug: `${createSlug(title)}-${new Date().getTime()}`,
           content,
           description: extractDescription(content, 100),
           tags,
@@ -190,4 +191,14 @@ export async function createPost(userId: string, payload: ICreatePostPayload) {
         }
       );
     });
+}
+
+export async function deletePost(userId: string, postId: string) {
+  const targetPost = {
+    query: `
+      *[_type == "post" && _id == "${postId}"][0]
+      `,
+  };
+  console.log(postId, '삭제시도');
+  return client.delete(targetPost).then(() => console.log(postId, '삭제됨'));
 }

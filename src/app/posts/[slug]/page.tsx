@@ -1,3 +1,4 @@
+import ActionBar from '@/components/post-detail/ActionBar';
 import CategorySection from '@/components/post-detail/CategorySection';
 import CommentsArticle from '@/components/post-detail/CommentsArticle';
 import CoverImage from '@/components/post-detail/CoverImage';
@@ -16,7 +17,6 @@ const fetcher = async (slug: string): Promise<IPostDetail> => {
 };
 export default async function PostDetailPage({ params: { slug } }: Props) {
   const post = await getPostDetail('hwisaac0@gmail.com', slug);
-
   // const post = await fetch(`/api/posts/nextjs-font-최적화`).then((res) =>
   //   res.json()
   // );
@@ -54,6 +54,7 @@ export default async function PostDetailPage({ params: { slug } }: Props) {
             />
             <PostContent post={post} />
             <CategorySection tags={post.tags} />
+            <ActionBar post={post} />
           </article>
           <CommentsArticle comments={post.comments} />
           <OtherPostsBlock prevPost={dummyPost} nextPost={dummyPost} />
