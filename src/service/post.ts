@@ -154,27 +154,14 @@ export async function getTags(email: string): Promise<string[]> {
   return [...new Set(myArr)] as string[];
 }
 
-export async function createPost(
-  userId: string,
-  {
-    title,
-    tags,
-    content,
-    file,
-  }: {
-    title: string;
-    tags: string[];
-    content: string;
-    file: Blob;
-  }
-) {
-  console.log({
-    userId,
-    title,
-    tags,
-    content,
-    file,
-  });
+interface ICreatePostPayload {
+  title: string;
+  tags: string[];
+  content: string;
+  file: Blob;
+}
+export async function createPost(userId: string, payload: ICreatePostPayload) {
+  const { title, tags, content, file } = payload;
 
   return fetch(assetsURL, {
     method: 'POST',
@@ -189,7 +176,7 @@ export async function createPost(
       return client.create(
         {
           _type: 'post',
-          author: { _ref: userId, _type: 'reference' },
+          author: { _ref: userId },
           title,
           slug: createSlug(title),
           content,

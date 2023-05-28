@@ -50,8 +50,8 @@ export default function FollowMeBlock({}: Props) {
   return (
     <GridSectionBlock title='Follow Me!'>
       <div className='w-full space-x-2 space-y-2'>
-        {SNSs.map((sns) => (
-          <SNSCard key={sns.color} sns={sns} />
+        {SNSs.map((sns, index) => (
+          <SNSCard key={`${sns.color}-${index}`} sns={sns} />
         ))}
       </div>
     </GridSectionBlock>
