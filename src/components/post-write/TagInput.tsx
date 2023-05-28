@@ -27,7 +27,6 @@ export default function TagInput({ tags, setTags }: Props) {
         setTags([...tags, newTag]);
       }
       setInputValue('');
-      console.log(tags);
     }
   };
   const handleTagRemove = (tagToRemove: string) => {

@@ -43,7 +43,20 @@ export default function CreatePostForm({}: Props) {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('form with tags >>', { ...form, tags });
+    const postData = { ...form, tags };
+    console.log('form with tags >>', postData);
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('postData', JSON.stringify(postData));
+
+    fetch('/api/posts', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => console.log('패칭끝: res>>', res))
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -74,7 +87,7 @@ export default function CreatePostForm({}: Props) {
       <ContainerWithTitle title='Post Image'>
         <ImageFileInput file={file} setFile={setFile} />
       </ContainerWithTitle>
-      <RedButton text='Submit' />
+      <RedButton text='Create' />
     </form>
   );
 }

@@ -46,7 +46,7 @@ export default function ImageFileInput({ file, setFile }: Props) {
         <div className='absolute inset-0 z-10 bg-sky-500/20 pointer-events-none' />
       )}
       {!file && (
-        <div className='flex flex-col items-center pointer-events-none'>
+        <div className='flex flex-col items-center pointer-events-none text-uPrimary'>
           <p>Drag and Drop your image here or click</p>
         </div>
       )}

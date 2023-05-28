@@ -8,7 +8,6 @@ import useSWR from 'swr';
 type Props = {};
 export default function PostsSection({}: Props) {
   const { data: posts } = useSWR<IPost[]>('/api/posts');
-  console.log(posts);
 
   const pageLength = 3;
   const [currentPage, setCurrentPage] = useState(1);

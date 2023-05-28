@@ -34,7 +34,7 @@ export default function NavMenu({ menu: { name, href, subMenu } }: Props) {
       ) : (
         <Link
           href={href}
-          className='group-hover:text-uRed duration-200 relative left-'>
+          className='group-hover:text-uRed duration-200 relative'>
           {name}
         </Link>
       )}

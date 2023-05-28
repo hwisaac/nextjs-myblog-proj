@@ -4,8 +4,10 @@ import remarkHtml from 'remark-html';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { IUser } from './user';
-import { client, urlFor } from './sanity';
+import { assetsURL, client, urlFor } from './sanity';
 import decodeSlug from '@/utils/decodeSlug';
+import createSlug from '@/utils/createSlug';
+import extractDescription from '@/utils/extractDescription';
 
 export interface IPost {
   title: string;
@@ -136,19 +138,69 @@ export async function getAllPostsOf(email?: string | null): Promise<IPost[]> {
   );
 }
 
-export async function getTags(email: string) : Promise<string[]>{
+export async function getTags(email: string): Promise<string[]> {
   const GROQ = `
     *[_type == "post"&& author->email=="${email}"]
         | order(_createdAt desc){
         "tags":tags,
     }
-  `
+  `;
   const totalTags = await client.fetch(GROQ);
-  const myArr = []
-  for (let el of totalTags){
-    myArr.push( ...el.tags)
+  const myArr = [];
+  for (let el of totalTags) {
+    myArr.push(...el.tags);
   }
- //@ts-ignore
-  return [...new Set(myArr) ] as string[];
-  
-} 
+  //@ts-ignore
+  return [...new Set(myArr)] as string[];
+}
+
+export async function createPost(
+  userId: string,
+  {
+    title,
+    tags,
+    content,
+    file,
+  }: {
+    title: string;
+    tags: string[];
+    content: string;
+    file: Blob;
+  }
+) {
+  console.log({
+    userId,
+    title,
+    tags,
+    content,
+    file,
+  });
+
+  return fetch(assetsURL, {
+    method: 'POST',
+    headers: {
+      'content-type': file.type,
+      authorization: `Bearer ${process.env.SANITY_SECRET_TOKEN}`,
+    },
+    body: file,
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      return client.create(
+        {
+          _type: 'post',
+          author: { _ref: userId, _type: 'reference' },
+          title,
+          slug: createSlug(title),
+          content,
+          description: extractDescription(content, 100),
+          tags,
+          postImage: { asset: { _ref: result.document._id } },
+          comments: [],
+        },
+        {
+          autoGenerateArrayKeys: true,
+        }
+      );
+    });
+}
