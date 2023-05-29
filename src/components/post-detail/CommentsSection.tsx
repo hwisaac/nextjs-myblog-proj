@@ -3,9 +3,9 @@ import React from 'react';
 import RedLineTitle from '../ui/RedLineTitle';
 import Comment from './Comment';
 
-type Props = { comments: IComment[] };
+type Props = { comments: IComment[]; postId: string };
 
-export default function CommentsSection({ comments }: Props) {
+export default function CommentsSection({ comments, postId }: Props) {
   const dummyComments = [
     {
       username: 'Username1',
@@ -37,7 +37,7 @@ export default function CommentsSection({ comments }: Props) {
       <RedLineTitle title={'Comments'} />
       <div className='divide-y divide-dashed'>
         {comments.map((comment, index) => (
-          <Comment key={`comment-${index}`} comment={comment} />
+          <Comment key={`comment-${index}`} comment={comment} postId={postId} />
         ))}
       </div>
     </section>

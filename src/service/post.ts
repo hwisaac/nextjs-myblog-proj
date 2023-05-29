@@ -199,6 +199,16 @@ export async function deletePost(userId: string, postId: string) {
       *[_type == "post" && _id == "${postId}"][0]
       `,
   };
-  console.log(postId, '삭제시도');
-  return client.delete(targetPost).then(() => console.log(postId, '삭제됨'));
+  return client
+    .delete(targetPost)
+    .then(() => console.log('포스트 삭제 성공:', postId))
+    .catch((error) => console.error(error));
+}
+
+export async function deleteComment(postId: string, _key: string) {
+  console.log(`deleteComment 함수에서 ${postId} key=${_key}`);
+  return client
+    .patch(postId)
+    .unset([`comments[_key == "${_key}"]`])
+    .commit();
 }

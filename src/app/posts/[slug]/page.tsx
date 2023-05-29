@@ -56,7 +56,7 @@ export default async function PostDetailPage({ params: { slug } }: Props) {
             <CategorySection tags={post.tags} />
             <ActionBar post={post} />
           </article>
-          <CommentsArticle comments={post.comments} />
+          <CommentsArticle comments={post.comments} postId={post.postId} />
           <OtherPostsBlock prevPost={dummyPost} nextPost={dummyPost} />
         </>
       )}

@@ -2,7 +2,7 @@ import { deletePost, getPostDetail } from '@/service/post';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Context = {
-  params: { slug: string; postId: string };
+  params: { slug: string };
 };
 const email = process.env.MY_EMAIL || '';
 export async function GET(_: NextRequest, context: Context) {
@@ -13,8 +13,8 @@ export async function GET(_: NextRequest, context: Context) {
 }
 
 export async function DELETE(_: NextRequest, context: Context) {
-  const { slug } = context.params;
-  console.log('api 라우트에서 postId 잘 들어왔나? ', slug);
-  await deletePost('', slug); //
+  const { slug: postId } = context.params;
+  console.log('api 라우트에서 postId 잘 들어왔나? ', postId);
+  await deletePost('', postId); //
   return;
 }
