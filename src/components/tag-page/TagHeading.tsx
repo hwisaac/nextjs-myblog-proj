@@ -1,8 +1,26 @@
-import React from 'react';
+'use client';
+import useSWR from 'swr';
+import React, { useEffect, useState } from 'react';
+import getAllTags from '@/utils/getAllTags';
+import TagCard from '../TagCard';
+import { IPost } from '@/service/post';
+import getPostsByTag from '@/utils/getPostsByTag';
 
-type Props = {};
+type Props = {
+  setSelectedPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
+  tagParam: string;
+};
 
-export default function TagHeading({}: Props) {
+export default function TagHeading({ setSelectedPosts, tagParam }: Props) {
+  const { data: posts } = useSWR('/api/posts');
+  const allTags = getAllTags(posts);
+  const TAGS = Object.keys(allTags);
+  const [selected, setSelected] = useState<string>(tagParam);
+
+  useEffect(() => {
+    setSelectedPosts([...getPostsByTag(selected, posts)]);
+  }, [selected, posts, setSelectedPosts]);
+
   return (
     <div className='bg-white shadow-md flex items-center p-20 justify-between gap-20 text-uFontColor'>
       <div className='w-1/3 flex flex-col items-center relative'>
@@ -10,16 +28,15 @@ export default function TagHeading({}: Props) {
           4
         </span>
         <h1 className='text-4xl font-semibold text-uPrimary'>
-          <em className='text-sky-400 inline'>#</em> Lifestyle
+          <em className='text-sky-400 inline'>#</em> {tagParam}
         </h1>
-        <span>4 - Articles</span>
+        <span>{allTags[tagParam]} - Articles</span>
       </div>
-      <p className='font-serif w-2/3 text-center'>
-        Sometimes you might want to put your site behind closed doors If you’ve
-        got a publication that you don’t want the world to see yet because it’s
-        not ready to launch, you can hide your Ghost site behind a simple shared
-        pass-phrase.
-      </p>
+      <div className='space-x-2 space-y-2'>
+        {TAGS.map((tag: string) => (
+          <TagCard key={tag} tag={tag} />
+        ))}
+      </div>
     </div>
   );
 }

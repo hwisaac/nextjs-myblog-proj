@@ -1,9 +1,3 @@
-// import { readFile } from 'fs/promises';
-// import path from 'path';
-import remarkHtml from 'remark-html';
-import remarkParse from 'remark-parse';
-import { unified } from 'unified';
-import { IUser } from './user';
 import { assetsURL, client, urlFor } from './sanity';
 import decodeSlug from '@/utils/decodeSlug';
 import createSlug from '@/utils/createSlug';
@@ -179,7 +173,7 @@ export async function createPost(userId: string, payload: ICreatePostPayload) {
           title,
           slug: `${createSlug(title)}-${new Date().getTime()}`,
           content,
-          description: extractDescription(content, 100),
+          description: extractDescription(content, 150),
           tags,
           postImage: { asset: { _ref: result.document._id } },
           comments: [],

@@ -1,16 +1,22 @@
 import { IPost } from '@/service/post';
 
-export default function getAllTags(posts: IPost[]): string[] {
-  if (!posts || posts.length === 0) return [];
-  const allTags: string[] = [];
+type TagName = string;
+type NumOfArticle = number;
+
+export default function getAllTags(
+  posts?: IPost[]
+): Record<TagName, NumOfArticle> {
+  const tagCounts: Record<TagName, NumOfArticle> = {};
 
   posts?.forEach((post) => {
     post.tags.forEach((tag) => {
-      if (!allTags.includes(tag)) {
-        allTags.push(tag);
+      if (tagCounts[tag]) {
+        tagCounts[tag]++;
+      } else {
+        tagCounts[tag] = 1;
       }
     });
   });
 
-  return allTags;
+  return tagCounts;
 }

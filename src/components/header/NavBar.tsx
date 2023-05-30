@@ -21,7 +21,7 @@ const menus = [
   },
   { name: 'Header Styles', href: '/header-styles', subMenu: [] },
   { name: 'Post Features', href: '/posts', subMenu: [] },
-  { name: '#Tag', href: '/tag', subMenu: [] },
+  { name: '#Tag', href: '/tags', subMenu: [] },
   { name: 'About', href: '/about', subMenu: [] },
   {
     name: 'Portfolio',
