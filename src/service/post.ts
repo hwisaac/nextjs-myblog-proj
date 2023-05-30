@@ -23,7 +23,6 @@ export interface IPost {
 
 export interface IComment {
   name: string;
-  email: string;
   password: string;
   content: string;
   _key: string;
@@ -47,7 +46,6 @@ export interface IPostDetail {
 }
 export const dummyComment: IComment = {
   name: '유저네임',
-  email: 'abcd@naver.com',
   password: '123123',
   createdAt: '123123',
   content: 'content ttttasdfasdf',
@@ -89,7 +87,7 @@ export async function getPostDetail(
     "author": {
       "name": author->name,
       "email": author->email,
-      "iamge" : author->image,
+      "image" : author->image,
     },
     "title" : title,
     "slug" : slug,
@@ -206,9 +204,26 @@ export async function deletePost(userId: string, postId: string) {
 }
 
 export async function deleteComment(postId: string, _key: string) {
-  console.log(`deleteComment 함수에서 ${postId} key=${_key}`);
   return client
     .patch(postId)
     .unset([`comments[_key == "${_key}"]`])
     .commit();
+}
+
+export async function postComment(
+  postId: string,
+  postData: { content: string; name: string; password: string }
+) {
+  const { content, name, password } = postData;
+  return client
+    .patch(postId)
+    .append('comments', [
+      {
+        content,
+        name,
+        password,
+        createdAt: new Date().toISOString(),
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
 }

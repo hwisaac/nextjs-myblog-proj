@@ -8,7 +8,7 @@ import IconClose from '../icons/IconClose';
 type Props = { comment: IComment; postId: string };
 
 export default function Comment({
-  comment: { name, email, password, content, _key, createdAt },
+  comment: { name, password, content, _key, createdAt },
   postId,
 }: Props) {
   const onDeleteComment = () => {

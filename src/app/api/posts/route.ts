@@ -22,10 +22,6 @@ export async function POST(req: NextRequest) {
   const postData = form.get('postData');
 
   const file = form.get('file') as Blob;
-  console.log('/api/posts/route.ts');
-  console.log('postData>>', postData);
-  console.log('file', file);
-  console.log('req.body.postData', req.body);
 
   if (!postData || !file) {
     return new Response('Bad request', { status: 400 });

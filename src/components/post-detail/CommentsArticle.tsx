@@ -9,7 +9,7 @@ export default function CommentsArticle({ comments, postId }: Props) {
   return (
     <article className='overflow-hidden bg-white shadow-lg m-4 py-14'>
       <CommentsSection comments={comments} postId={postId} />
-      <LeaveReplySection />
+      <LeaveReplySection postId={postId} />
     </article>
   );
 }
