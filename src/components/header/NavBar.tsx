@@ -9,29 +9,23 @@ const menus = [
   {
     name: 'Home',
     href: '/',
+    subMenu: [],
+  },
+  {
+    name: '#Tags',
+    href: '/tags',
     subMenu: [
-      { name: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', href: '/' },
-      { name: 'b', href: '/' },
-      { name: 'c', href: '/' },
-      { name: 'd', href: '/' },
-      { name: 'e', href: '/' },
-      { name: 'f', href: '/' },
-      { name: 'g', href: '/' },
+      {
+        name: 'nextjs',
+        href: '/tags/nextjs',
+      },
     ],
   },
-  { name: 'Header Styles', href: '/header-styles', subMenu: [] },
-  { name: 'Post Features', href: '/posts', subMenu: [] },
-  { name: '#Tag', href: '/tags', subMenu: [] },
   { name: 'About', href: '/about', subMenu: [] },
   {
     name: 'Portfolio',
     href: '/portfolio',
-    subMenu: [
-      { name: 'a', href: '/' },
-      { name: 'b', href: '/' },
-      { name: 'c', href: '/' },
-      { name: 'd', href: '/' },
-    ],
+    subMenu: [],
   },
   { name: 'Contact', href: '/contact', subMenu: [] },
 ];

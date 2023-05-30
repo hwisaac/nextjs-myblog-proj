@@ -65,7 +65,7 @@ export default function ContactPage({}: Props) {
   return (
     <section className='flex flex-col bg-white shadow-lg space-y-4 px-10 py-14'>
       <h1 className='text-uPrimary font-bold text-4xl mb-10'>
-        Contact/{banner && banner.message}
+        Contact{banner && banner.message}
       </h1>
       <form onSubmit={onSubmit}>
         <ContainerWithTitle title='Your name'>
@@ -108,7 +108,7 @@ export default function ContactPage({}: Props) {
             onChange={onChange}
           />
         </ContainerWithTitle>
-        <RedButton text='Submit' />
+        <RedButton text='Submit' addClassName='mt-4' />
       </form>
     </section>
   );
