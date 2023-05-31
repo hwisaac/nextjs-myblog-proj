@@ -102,7 +102,6 @@ export default function TagsPage({ params }: Props) {
   const tagParam = decodeSlug(params.tag);
   const [selectedPosts, setSelectedPosts] = useState<IPost[]>([]);
 
-  const allTags = getAllTags(posts);
   return (
     <section>
       <PortalKV>

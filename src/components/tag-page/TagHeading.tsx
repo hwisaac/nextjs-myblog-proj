@@ -8,10 +8,10 @@ import getPostsByTag from '@/utils/getPostsByTag';
 
 type Props = {
   setSelectedPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
-  tagParam: string;
+  tagParam?: string;
 };
 
-export default function TagHeading({ setSelectedPosts, tagParam }: Props) {
+export default function TagHeading({ setSelectedPosts, tagParam = '' }: Props) {
   const { data: posts } = useSWR('/api/posts');
   const allTags = getAllTags(posts);
   const TAGS = Object.keys(allTags);

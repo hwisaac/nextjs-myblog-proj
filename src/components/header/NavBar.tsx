@@ -14,12 +14,7 @@ const menus = [
   {
     name: '#Tags',
     href: '/tags',
-    subMenu: [
-      {
-        name: 'nextjs',
-        href: '/tags/nextjs',
-      },
-    ],
+    subMenu: [],
   },
   { name: 'About', href: '/about', subMenu: [] },
   {

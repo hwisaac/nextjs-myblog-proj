@@ -17,29 +17,7 @@ const fetcher = async (slug: string): Promise<IPostDetail> => {
 };
 export default async function PostDetailPage({ params: { slug } }: Props) {
   const post = await getPostDetail('hwisaac0@gmail.com', slug);
-  // const post = await fetch(`/api/posts/nextjs-font-최적화`).then((res) =>
-  //   res.json()
-  // );
-  // console.log('slug 페이지에서 post : ', post);
-  // const {
-  //   data: post,
-  //   isLoading,
-  //   error,
-  // } = useSWR<IPostDetail>(`/api/posts/${slug}`, () => fetcher(slug));
-  // console.log('useSWR data: ', data);
-  // console.log(post);
 
-  // const {
-  //   author: { name, email, image },
-  //   title,
-  //   thumbnail,
-  //   tags,
-  //   postId,
-  //   createdAt,
-  //   updatedAt,
-  //   content,
-  //   commentsLength,
-  // } = post;
 
   return (
     <section className='border'>
