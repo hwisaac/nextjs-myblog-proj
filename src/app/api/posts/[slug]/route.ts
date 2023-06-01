@@ -7,8 +7,10 @@ type Context = {
 const userId = 'Darchive';
 export async function GET(_: NextRequest, context: Context) {
   const { slug } = context.params;
+
   const postDetail = await getPostDetail(userId, slug) //
     .then((data) => NextResponse.json(data));
+
   return postDetail;
 }
 

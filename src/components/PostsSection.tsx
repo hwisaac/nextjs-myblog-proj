@@ -5,11 +5,12 @@ import PaginationNav from './PaginationNav';
 import PostCard from './PostCard';
 import useSWR from 'swr';
 
+const PAGE_LENGTH = 4;
 type Props = {};
 export default function PostsSection({}: Props) {
   const { data: posts } = useSWR<IPost[]>('/api/posts');
 
-  const pageLength = 3;
+  const pageLength = PAGE_LENGTH;
   const [currentPage, setCurrentPage] = useState(1);
   const lastPage = posts ? Math.ceil(posts.length / pageLength) : 0;
 
@@ -32,7 +33,7 @@ export default function PostsSection({}: Props) {
 const paginate = (posts: IPost[], page: number): IPost[] => {
   if (page < 0 || page >= posts.length) return [];
 
-  const pageLength = 3;
+  const pageLength = PAGE_LENGTH;
   const start = page * pageLength;
   const end = start + pageLength;
 
