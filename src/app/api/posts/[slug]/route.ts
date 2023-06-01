@@ -4,10 +4,10 @@ import { NextRequest, NextResponse } from 'next/server';
 type Context = {
   params: { slug: string };
 };
-const email = process.env.MY_EMAIL || '';
+const userId = 'Darchive';
 export async function GET(_: NextRequest, context: Context) {
   const { slug } = context.params;
-  const postDetail = await getPostDetail(email, slug) //
+  const postDetail = await getPostDetail(userId, slug) //
     .then((data) => NextResponse.json(data));
   return postDetail;
 }

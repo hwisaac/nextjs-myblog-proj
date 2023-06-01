@@ -13,11 +13,10 @@ type Props = {
 };
 const testSlug = 'typeorm-getting-started';
 const fetcher = async (slug: string): Promise<IPostDetail> => {
-  return await getPostDetail('hwisaac0@gmail.com', slug);
+  return await getPostDetail('Darchive', slug);
 };
 export default async function PostDetailPage({ params: { slug } }: Props) {
-  const post = await getPostDetail('hwisaac0@gmail.com', slug);
-
+  const post = await getPostDetail('Darchive', slug);
 
   return (
     <section className='border'>

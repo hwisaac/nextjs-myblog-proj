@@ -25,7 +25,7 @@ export default function TagHeading({ setSelectedPosts, tagParam = '' }: Props) {
     <div className='bg-white shadow-md flex items-center p-20 justify-between gap-20 text-uFontColor'>
       <div className='w-1/3 flex flex-col items-center relative'>
         <span className='absolute top-1/2 -translate-y-1/2  text-[12rem] text-gray-400/20'>
-          4
+          {allTags[tagParam]}
         </span>
         <h1 className='text-4xl font-semibold text-uPrimary'>
           <em className='text-sky-400 inline'>#</em> {tagParam}

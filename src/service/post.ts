@@ -69,15 +69,15 @@ const posts: IPost[] = [
 ];
 
 export async function getPostDetail(
-  email: string,
+  userId: string,
   slug: string
 ): Promise<IPostDetail> {
-  if (!email) throw new Error('email 에러');
+  if (!userId) throw new Error('userId 에러');
 
   const GROQ = `
   *[_type == "post" && slug == "${decodeSlug(
     slug
-  )}" && author->email == "${email}"]{
+  )}" && author->_id == "${userId}"]{
     "author": {
       "name": author->name,
       "email": author->email,

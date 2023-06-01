@@ -3,10 +3,7 @@ import PortalKV from '@/components/PortalKV';
 import PostCard from '@/components/PostCard';
 import TagHeading from '@/components/tag-page/TagHeading';
 import { IPost } from '@/service/post';
-import decodeSlug from '@/utils/decodeSlug';
-import getAllTags from '@/utils/getAllTags';
 import React, { useState } from 'react';
-import useSWR from 'swr';
 
 type Props = {
   params: any;
