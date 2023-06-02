@@ -8,6 +8,7 @@ import { IPost } from '@/service/post';
 import convertDateFormat from '@/utils/convertDateFormat';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = { post: IPost; size?: 'small' | 'normal' };
 
@@ -34,10 +35,18 @@ export default function PostCard({
       } `}>
       <div className='flex items-center gap-6'>
         <div
-          className={`hidden sm:block bg-slate-100 shrink-0 ${
+          className={`hidden sm:block bg-slate-100 shrink-0 relative saturate-50 ${
             size === 'small' ? 'w-12 h-16' : 'w-20 h-24'
           }`}>
-          {/* image */}
+          {postImage && (
+            <Image
+              className='object-cover'
+              src={postImage}
+              fill
+              alt={title}
+              sizes='100px'
+            />
+          )}
         </div>
         <div className='text-uFontColor space-y-2'>
           <Link href={`/posts/${slug}`}>

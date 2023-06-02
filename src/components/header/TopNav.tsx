@@ -18,6 +18,20 @@ const navList = [
   { name: 'Portfolio', href: '/portfolio', subnav: [] },
   { name: 'Contact', href: '/contact', subnav: [] },
 ];
+const menus = [
+  {
+    name: 'Home',
+    href: '/',
+    subMenu: [],
+  },
+  {
+    name: '#Tags',
+    href: '/tags',
+    subMenu: [],
+  },
+  { name: 'About', href: '/about', subMenu: [] },
+  { name: 'Contact', href: '/contact', subMenu: [] },
+];
 
 const variants = {
   hide: {
@@ -46,9 +60,9 @@ export default function TopNav({ show }: Props) {
         <BlogTitle size='small' />
 
         <ul className='font-serif flex bg-white gap-5 w-fit px-6 text-uPrimary font-medium'>
-          {navList.map((item) => (
-            <li className='hover:text-uRed duration-200' key={item.name}>
-              <Link href={item.href}>{item.name}</Link>
+          {menus.map((menu) => (
+            <li className='hover:text-uRed duration-200' key={menu.name}>
+              <Link href={menu.href}>{menu.name}</Link>
             </li>
           ))}
         </ul>

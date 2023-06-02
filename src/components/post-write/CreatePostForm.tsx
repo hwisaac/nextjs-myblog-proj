@@ -4,6 +4,9 @@ import TagInput from '@/components/post-write/TagInput';
 import RedButton from '@/components/ui/RedButton';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import ImageFileInput from './ImageFileInput';
+import usePosts from '@/hooks/usePosts';
+import { routeros } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { useRouter } from 'next/navigation';
 
 type Props = {};
 
@@ -17,13 +20,11 @@ const textareaClassName = [commonClassName, ''].join(' ');
 type Form = {
   title: string;
   content: string;
-  postImage: any;
 };
 
 const DEFAULT_DATA = {
   title: '',
   content: '',
-  postImage: '',
 };
 export interface BannerData {
   message: string;
@@ -35,6 +36,8 @@ export default function CreatePostForm({}: Props) {
   const [banner, setBanner] = useState<BannerData | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [file, setFile] = useState<File>();
+  const { createPost } = usePosts();
+  const router = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -43,20 +46,10 @@ export default function CreatePostForm({}: Props) {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const postData = { ...form, tags };
-    console.log('form with tags >>', postData);
-    if (!file) return;
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('postData', JSON.stringify(postData));
-
-    fetch('/api/posts', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((res) => console.log('패칭끝: res>>', res))
-      .catch((err) => console.error(err));
+    createPost({ form, tags, file }).then(() => router.push('/'));
   };
 
   return (

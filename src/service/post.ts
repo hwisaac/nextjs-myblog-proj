@@ -211,6 +211,7 @@ export async function postComment(
   const { content, name, password } = postData;
   return client
     .patch(postId)
+    .setIfMissing({ comments: [] })
     .append('comments', [
       {
         content,

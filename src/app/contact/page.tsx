@@ -98,7 +98,7 @@ export default function ContactPage({}: Props) {
             onChange={onChange}
           />
         </ContainerWithTitle>
-        <ContainerWithTitle title='Your message'>
+        <ContainerWithTitle title='Message'>
           <textarea
             rows={10}
             className={textareaClassName}
