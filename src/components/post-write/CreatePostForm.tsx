@@ -49,9 +49,10 @@ export default function CreatePostForm({}: Props) {
 
     const postData = { ...form, tags };
     console.log('createPost 작동!');
-    createPost({ form, tags, file })
-      .then(() => router.push('/'))
-      .then(() => console.log('createPost 작동 종료'));
+    createPost({ form, tags, file });
+    router.push('/');
+    // .then(() => router.push('/'))
+    // .then(() => console.log('createPost 작동 종료'));
   };
 
   return (
