@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function TagsPage() {
-  // const { data: posts } = useSWR<IPost[]>('/api/posts');
   const [selectedPosts, setSelectedPosts] = useState<IPost[]>([]);
 
   return (

@@ -98,7 +98,6 @@ const posts: IPost[] = [
   },
 ];
 export default function TagsPage({ params }: Props) {
-  // const { data: posts } = useSWR<IPost[]>('/api/posts');
   const tagParam = decodeSlug(params.tag);
   const [selectedPosts, setSelectedPosts] = useState<IPost[]>([]);
 

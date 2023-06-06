@@ -48,8 +48,10 @@ export default function CreatePostForm({}: Props) {
     e.preventDefault();
 
     const postData = { ...form, tags };
-
-    createPost({ form, tags, file }).then(() => router.push('/'));
+    console.log('createPost 작동!');
+    createPost({ form, tags, file })
+      .then(() => router.push('/'))
+      .then(() => console.log('createPost 작동 종료'));
   };
 
   return (

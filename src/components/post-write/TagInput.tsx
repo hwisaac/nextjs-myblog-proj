@@ -22,7 +22,8 @@ export default function TagInput({ tags, setTags }: Props) {
 
   const handleInputKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     const newTag = createSlug(inputValue);
-    if (event.key === 'Enter' && newTag) {
+    if (event.key === ' ' && newTag) {
+      // 스페이스바를 누를때 태그 추가
       if (!tags.includes(newTag)) {
         setTags([...tags, newTag]);
       }
@@ -52,7 +53,7 @@ export default function TagInput({ tags, setTags }: Props) {
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleInputKeyPress}
-        placeholder='Enter tags...'
+        placeholder='태그 입력시 스페이스바를 누르세요'
       />
     </div>
   );

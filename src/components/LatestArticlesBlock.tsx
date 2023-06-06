@@ -4,6 +4,7 @@ import GridSectionBlock from './footer/GridSectionBlock';
 import ArticleCard from './ArticleCard';
 import { IPost, getAllPostsOf } from '@/service/post';
 import useSWR from 'swr';
+import usePosts from '@/hooks/usePosts';
 
 type Props = {};
 
@@ -142,7 +143,7 @@ const posts: IPost[] = [
 
 export default function LatestArticlesBlock() {
   // const posts = await getAllPostsOf(process.env.MY_EMAIL);
-  const { data: posts } = useSWR<IPost[]>('/api/posts');
+  const { posts } = usePosts();
 
   return (
     <GridSectionBlock title='Latest Articles'>

@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import PaginationNav from './PaginationNav';
 import PostCard from './PostCard';
 import useSWR from 'swr';
+import usePosts from '@/hooks/usePosts';
 
 const PAGE_LENGTH = 4;
 type Props = {};
 export default function PostsSection({}: Props) {
-  const { data: posts } = useSWR<IPost[]>('/api/posts');
+  const { posts } = usePosts();
 
   const pageLength = PAGE_LENGTH;
   const [currentPage, setCurrentPage] = useState(1);
