@@ -31,7 +31,7 @@ export default function usePosts() {
 
     const tempPost: IPost = {
       title,
-      slug: createSlug(title),
+      slug: '',
       postImage: null,
       description: extractDescription(content, 150),
       tags,
@@ -41,7 +41,7 @@ export default function usePosts() {
       commentsLength: 0,
     };
 
-    const newPosts: IPost[] = [...posts, tempPost];
+    const newPosts: IPost[] = [tempPost, ...posts];
 
     console.log('newPosts > ', newPosts);
 
@@ -67,8 +67,5 @@ function addPost({ form, tags = [], file }: TCreatePostInput) {
   return fetch('/api/posts', {
     method: 'POST',
     body: formData,
-  }).then((res) => {
-    console.log('addPost 에서 : res.json() >> ', res.json());
-    return res.json();
-  });
+  }).then((res) => res.json());
 }

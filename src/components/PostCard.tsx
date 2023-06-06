@@ -49,7 +49,7 @@ export default function PostCard({
           )}
         </div>
         <div className='text-uFontColor space-y-2'>
-          <Link href={`/posts/${slug}`}>
+          <Link href={slug === '' ? '/' : `/posts/${slug}`}>
             <UnderlineHeading text={title} size={size} />
           </Link>
           <div className='flex gap-4 font-serif'>
