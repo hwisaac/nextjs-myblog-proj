@@ -17,6 +17,7 @@ type PostData = {
   tags: string[];
   content: string;
 };
+
 export async function POST(req: NextRequest) {
   const form = await req.formData();
   const postData = form.get('postData');

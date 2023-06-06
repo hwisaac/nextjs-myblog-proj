@@ -22,8 +22,10 @@ export default function usePosts() {
     mutate,
   } = useSWR<IPost[]>('/api/posts');
 
-  // const { mutate: globalMutate } = useSWRConfig();
+  const { mutate: globalMutate } = useSWRConfig();
 
+  // 서버에 새로운 post 를 업데이트하기
+  // tempPost
   const createPost = async ({ form, tags = [], file }: TCreatePostInput) => {
     const { title, content } = form;
 
@@ -46,17 +48,18 @@ export default function usePosts() {
     console.log('newPosts > ', newPosts);
 
     return mutate(addPost({ form, tags, file }), {
-      optimisticData: newPosts,
-      populateCache: false,
-      revalidate: false,
-      rollbackOnError: true,
-    });
+      optimisticData: newPosts, // 즉시 해당 데이터로 업데이트
+      populateCache: false, // remote mutate 결과를 캐시에 기록하지 않기
+      revalidate: false, // 비동기 데이터가 업데이트돼도 캐시 유효성 검사하지 말기
+      rollbackOnError: true, // remote mutate 과정에서 에러가 나면 캐시를 롤백시키기
+    }).then(() => globalMutate('/api/posts'));
   };
 
   return { posts, isLoading, error, createPost };
 }
 
-function addPost({ form, tags = [], file }: TCreatePostInput) {
+// 서버에 데이터를 보내는 함수
+function addPost({ form, tags, file }: TCreatePostInput) {
   const { title, content } = form;
   const formData = new FormData();
   if (!file) throw Error('file 이 없습니다.');
