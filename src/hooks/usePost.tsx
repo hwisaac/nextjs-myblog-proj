@@ -1,20 +1,17 @@
 import { IPostDetail } from '@/service/post';
-import React from 'react';
 import useSWR, { useSWRConfig } from 'swr';
+import { ScopedMutator } from 'swr/_internal';
 
-export default function usePost(slug: string) {
-  const key = `/api/posts/${slug}`;
-  const { cache, mutate } = useSWRConfig();
-  let post = cache.get(key)?.data;
-  if (!post) {
-    console.log('post가 없음', post);
-  }
-  // const {
-  //   data: post,
-  //   isLoading,
-  //   error,
-  //   mutate,
-  // } = useSWR<IPostDetail>(`/api/posts/${slug}`);
+type UsePost = {
+  post: IPostDetail | undefined;
+  mutate: ScopedMutator<any>;
+  isLoading: boolean;
+  error: any;
+};
+export default function usePost(slug: string): UsePost {
+  const urlKey = `/api/posts/${slug}`;
+  const { mutate } = useSWRConfig();
+  const { data: post, isLoading, error } = useSWR<IPostDetail>(urlKey);
 
-  return { post, mutate };
+  return { post, mutate, isLoading, error };
 }

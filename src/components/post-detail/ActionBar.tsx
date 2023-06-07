@@ -2,12 +2,13 @@
 import { IPostDetail, createPost, deletePost } from '@/service/post';
 import React from 'react';
 
-type Props = { post: IPostDetail };
+type Props = { post?: IPostDetail };
 
 const actionStyle =
   'text-sm text-uFontColor hover:text-uTwitter active:text-uRed cursor-pointer';
 
 export default function ActionBar({ post }: Props) {
+  if (!post) return null;
   const onDelete = () => {
     fetch(`/api/posts/${post.postId}`, {
       method: 'DELETE',

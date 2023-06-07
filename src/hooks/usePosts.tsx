@@ -3,8 +3,9 @@ import createSlug from '@/utils/createSlug';
 import extractDescription from '@/utils/extractDescription';
 import useSWR, { useSWRConfig } from 'swr';
 import usePost from './usePost';
+import { useEffect, useState } from 'react';
 
-type TCreatePostParam = {
+export type TCreatePostParam = {
   form: {
     title: string;
     content: string;
@@ -15,6 +16,10 @@ type TCreatePostParam = {
 };
 
 export default function usePosts() {
+  const [tempPostDetail, setTempPostDetail] = useState<IPostDetail | null>(
+    null
+  );
+
   const {
     data: posts,
     isLoading,
@@ -22,16 +27,18 @@ export default function usePosts() {
     mutate,
   } = useSWR<IPost[]>('/api/posts');
 
-  const { mutate: globalMutate } = useSWRConfig();
+  const { mutate: globalMutate, cache } = useSWRConfig();
 
   // 서버에 새로운 post 를 업데이트하기
   const createPost = async ({ form, tags = [], file }: TCreatePostParam) => {
     const { title, content } = form;
     const slug = createSlug(title);
+    const urlKey = `/api/posts/${slug}`;
 
     if (!posts) return console.log('posts 가 없습니다!');
     // 임시 postDetail 데이터
-    const tempPostDetail: IPostDetail = {
+
+    setTempPostDetail({
       author: {
         name: 'Darchive',
         email: 'hwisaac0@gmail.com',
@@ -46,18 +53,9 @@ export default function usePosts() {
       updatedAt: new Date().toISOString(),
       comments: [],
       content: '임시\n' + content,
-    };
+    });
 
-    globalMutate(
-      `/api/posts/${slug}`,
-      {},
-      {
-        optimisticData: tempPostDetail, // 데이터보낸 동안 즉시 가짜데이터로 ui를 업데이트
-        populateCache: false, // remote mutate 리턴값을를 캐시에 기록하지 않기.
-        revalidate: false, // 비동기 데이터가 업데이트돼도 캐시 유효성 검사하기(=내가 만든 데이터를 안믿는다)
-        rollbackOnError: false, // remote mutate 과정에서 에러가 나면 캐시를 롤백시키기
-      }
-    );
+    console.log('tempPostDetail: ', tempPostDetail);
 
     // 임시 데이터 tempPost
     const tempPost: IPost = {

@@ -17,26 +17,28 @@ type Props = {
 
 export default function PostDetailBlock({ slug }: Props) {
   const { post } = usePost(slug);
+
   useEffect(() => {
     console.log(`postDetai에서 post(${slug}) : `, post);
-  }, [post]);
-
-  if (!post) return null;
+  }, [post, slug]);
 
   return (
     <>
       <article className='overflow-hidden bg-white shadow-lg m-4'>
-        <CoverImage image={post.postImage} />
+        <CoverImage image={post?.postImage} />
         <PostHead
-          title={post.title}
-          createdAt={post.createdAt}
+          title={post?.title}
+          createdAt={post?.createdAt}
           commentsLength={post?.comments?.length || 0}
         />
         <PostContent post={post} />
-        <CategorySection tags={post.tags} />
+        <CategorySection tags={post?.tags} />
         <ActionBar post={post} />
       </article>
-      <CommentsArticle comments={post.comments} postId={post.postId} />
+      <CommentsArticle
+        comments={post?.comments || []}
+        postId={post?.postId || ''}
+      />
     </>
   );
 }

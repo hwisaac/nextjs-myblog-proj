@@ -3,10 +3,12 @@ import CustomMarkdownViewer from './CustomMarkdownViewer';
 import { IPostDetail } from '@/service/post';
 
 type Props = {
-  post: IPostDetail;
+  post?: IPostDetail;
 };
 
 export default function PostContent({ post }: Props) {
+  if (!post) return null;
+
   const {
     title,
     // author: { name, email, image },
