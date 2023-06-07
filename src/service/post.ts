@@ -58,16 +58,6 @@ export const dummyPost: IPost = {
   commentsLength: 3,
 };
 
-const posts: IPost[] = [
-  dummyPost,
-  dummyPost,
-  dummyPost,
-  dummyPost,
-  dummyPost,
-  dummyPost,
-  dummyPost,
-];
-
 export async function getPostDetail(
   userId: string,
   slug: string
@@ -95,12 +85,15 @@ export async function getPostDetail(
   }[0]
   `;
 
-  return client.fetch(GROQ).then((post) => ({
-    ...post,
-    comments: post?.comments ?? [],
-    tags: post?.tags ?? [],
-    postImage: post?.postImage ? urlFor(post.postImage) : null,
-  }));
+  return client
+    .fetch(GROQ)
+    .then((post) => ({
+      ...post,
+      comments: post?.comments ?? [],
+      tags: post?.tags ?? [],
+      postImage: post?.postImage ? urlFor(post.postImage) : null,
+    }))
+    .catch((err) => console.error(err));
 }
 
 export async function getAllPostsOf(email?: string | null): Promise<IPost[]> {
@@ -171,7 +164,7 @@ export async function createPost(userId: string, payload: ICreatePostPayload) {
           _type: 'post',
           author: { _ref: userId },
           title,
-          slug: `${createSlug(title)}-${new Date().getTime()}`,
+          slug: createSlug(title),
           content,
           description: extractDescription(content, 150),
           tags,

@@ -1,6 +1,6 @@
 'use client';
 import { IPost, IPostDetail, dummyPost, getPostDetail } from '@/service/post';
-import React from 'react';
+import React, { useEffect } from 'react';
 import OtherPostsBlock from './OtherPostsBlock';
 import CommentsArticle from './CommentsArticle';
 import ActionBar from './ActionBar';
@@ -9,14 +9,17 @@ import PostContent from './PostContent';
 import PostHead from './PostHead';
 import CoverImage from './CoverImage';
 import useSWR from 'swr';
+import usePost from '@/hooks/usePost';
 
 type Props = {
   slug: string;
 };
 
 export default function PostDetailBlock({ slug }: Props) {
-  // const post = await getPostDetail('Darchive', slug);
-  const { data: post } = useSWR<IPostDetail>(`/api/posts/${slug}`);
+  const { post } = usePost(slug);
+  useEffect(() => {
+    console.log(`postDetai에서 post(${slug}) : `, post);
+  }, [post]);
 
   if (!post) return null;
 
@@ -27,7 +30,7 @@ export default function PostDetailBlock({ slug }: Props) {
         <PostHead
           title={post.title}
           createdAt={post.createdAt}
-          commentsLength={post.comments.length || 0}
+          commentsLength={post?.comments?.length || 0}
         />
         <PostContent post={post} />
         <CategorySection tags={post.tags} />

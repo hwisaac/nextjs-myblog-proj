@@ -5,6 +5,7 @@ type Context = {
   params: { slug: string };
 };
 const userId = 'Darchive';
+
 export async function GET(_: NextRequest, context: Context) {
   const { slug } = context.params;
 
