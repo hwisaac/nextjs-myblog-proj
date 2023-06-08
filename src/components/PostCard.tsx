@@ -49,7 +49,7 @@ export default function PostCard({
           )}
         </div>
         <div className='text-uFontColor space-y-2'>
-          <Link href={slug === '' ? '/' : `/posts/${slug}`}>
+          <Link href={postId === '' ? '/' : `/posts/${postId}`}>
             <UnderlineHeading text={title} size={size} />
           </Link>
           <div className='flex gap-4 font-serif'>
@@ -80,7 +80,7 @@ export default function PostCard({
       {size === 'normal' && (
         <button
           className='absolute px-5 h-10 -bottom-5 border bg-uPrimary text-white text-sm font-light left-[50%] -translate-x-[50%]'
-          onClick={() => router.push(`/posts/${slug}`)}>
+          onClick={() => router.push(`/posts/${postId}`)}>
           Continue Reading
         </button>
       )}

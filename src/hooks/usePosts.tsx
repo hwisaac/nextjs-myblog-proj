@@ -26,19 +26,20 @@ export default function usePosts() {
   // 서버에 새로운 post 를 업데이트하기
   const updatePost = ({ form, tags = [], file }: TCreatePostParam) => {
     const { title, content } = form;
-    const slug = createSlug(title);
-    const urlKey = `/api/posts/${slug}`;
+    const tempPostId = `temp-${new Date().getTime()}`;
+    
+
 
     if (!posts) return console.log('posts 가 없습니다!');
 
     // 임시 데이터 tempPost
     const tempPost: IPost = {
       title: `${title}(임시)`,
-      slug,
+      slug: createSlug(title),
       postImage: file ? URL.createObjectURL(file) : '',
       description: extractDescription(content, 150),
       tags,
-      postId: `temp-${new Date().getTime()}`,
+      postId: tempPostId,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       commentsLength: 0,
@@ -68,7 +69,7 @@ function toServer({ form, tags, file }: TCreatePostParam) {
 
   formData.append('file', file);
   formData.append('postData', JSON.stringify({ title, content, tags }));
-
+  console.log(formData);
   return fetch('/api/posts', {
     method: 'POST',
     body: formData,

@@ -1,11 +1,18 @@
+'use client';
 import { IComment } from '@/service/post';
 import React from 'react';
 import RedLineTitle from '../ui/RedLineTitle';
 import Comment from './Comment';
+import useComments from '@/hooks/useComments';
+import usePost from '@/hooks/usePost';
 
-type Props = { comments: IComment[]; postId: string };
+type Props = { postId: string };
 
-export default function CommentsSection({ comments, postId }: Props) {
+export default function CommentsSection({ postId }: Props) {
+  const { comments } = usePost(postId);
+
+  if (!comments || comments.length === 0) return null;
+
   return (
     <section className='pb-16 px-10 '>
       <RedLineTitle title={'Comments'} />

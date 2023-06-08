@@ -25,7 +25,7 @@ export default function ArticleCard({ post }: Props) {
         )}
       </div>
       <div className='ml-3 justify-between pb-2 w-[75%]'>
-        <Link href={`/posts/${post.slug}`}>
+        <Link href={`/posts/${post.postId}`}>
           <UnderlineHeading text={post.title} size='small' />
         </Link>
         <span className='block font-serif h-1/4 text-gray-500 text-xs'>

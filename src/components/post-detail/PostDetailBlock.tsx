@@ -12,15 +12,15 @@ import useSWR from 'swr';
 import usePost from '@/hooks/usePost';
 
 type Props = {
-  slug: string;
+  postId: string;
 };
 
-export default function PostDetailBlock({ slug }: Props) {
-  const { post } = usePost(slug);
+export default function PostDetailBlock({ postId }: Props) {
+  const { post } = usePost(postId);
 
   useEffect(() => {
-    console.log(`postDetai에서 post(${slug}) : `, post);
-  }, [post, slug]);
+    console.log(`postDetai에서 post(${postId}) : `, post);
+  }, [post, postId]);
 
   return (
     <>
@@ -35,10 +35,7 @@ export default function PostDetailBlock({ slug }: Props) {
         <CategorySection tags={post?.tags} />
         <ActionBar post={post} />
       </article>
-      <CommentsArticle
-        comments={post?.comments || []}
-        postId={post?.postId || ''}
-      />
+      <CommentsArticle postId={post?.postId || ''} />
     </>
   );
 }

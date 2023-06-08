@@ -16,8 +16,8 @@ type PostData = {
 
 export async function POST(req: NextRequest) {
   const form = await req.formData();
-  const postData = form.get('postData');
 
+  const postData = form.get('postData');
   const file = form.get('file') as Blob;
 
   if (!postData || !file) {

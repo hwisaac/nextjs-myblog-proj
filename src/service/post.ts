@@ -1,5 +1,4 @@
 import { assetsURL, client, urlFor } from './sanity';
-import decodeSlug from '@/utils/decodeSlug';
 import createSlug from '@/utils/createSlug';
 import extractDescription from '@/utils/extractDescription';
 
@@ -60,14 +59,12 @@ export const dummyPost: IPost = {
 
 export async function getPostDetail(
   userId: string,
-  slug: string
+  postId: string
 ): Promise<IPostDetail> {
   if (!userId) throw new Error('userId 에러');
 
   const GROQ = `
-  *[_type == "post" && slug == "${decodeSlug(
-    slug
-  )}" && author->_id == "${userId}"]{
+  *[_type == "post" && _id == "${postId}" && author->_id == "${userId}"]{
     "author": {
       "name": author->name,
       "email": author->email,
@@ -195,6 +192,18 @@ export async function deleteComment(postId: string, _key: string) {
     .patch(postId)
     .unset([`comments[_key == "${_key}"]`])
     .commit();
+}
+let dummyPostId = 'nTFm2VscxOrnKR8ozYiMZ4';
+
+export async function getComments(postId: string): Promise<IComment[]> {
+  const GROQ = `
+    *[_type == "post"&& _id=="${postId}"]
+        | order(_createdAt desc){
+        "comments":comments,
+    }.comments
+  `;
+  const comments = await client.fetch(GROQ);
+  return comments;
 }
 
 export async function postComment(
