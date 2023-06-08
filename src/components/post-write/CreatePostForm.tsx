@@ -36,7 +36,7 @@ export default function CreatePostForm({}: Props) {
   const [banner, setBanner] = useState<BannerData | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [file, setFile] = useState<File>();
-  const { createPost } = usePosts();
+  const { updatePost } = usePosts();
   const router = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,8 +48,8 @@ export default function CreatePostForm({}: Props) {
     e.preventDefault();
 
     const postData = { ...form, tags };
-    console.log('createPost 작동!');
-    createPost({ form, tags, file });
+    console.log('updatePost 작동!');
+    updatePost({ form, tags, file });
     router.push('/');
     // .then(() => router.push('/'))
     // .then(() => console.log('createPost 작동 종료'));

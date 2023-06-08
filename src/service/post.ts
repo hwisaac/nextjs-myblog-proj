@@ -178,7 +178,7 @@ export async function createPost(userId: string, payload: ICreatePostPayload) {
     });
 }
 
-export async function deletePost(userId: string, postId: string) {
+export async function deletePost(postId: string) {
   const targetPost = {
     query: `
       *[_type == "post" && _id == "${postId}"][0]
