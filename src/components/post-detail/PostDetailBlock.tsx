@@ -1,5 +1,4 @@
 'use client';
-import { IPost, IPostDetail, dummyPost, getPostDetail } from '@/service/post';
 import React, { useEffect } from 'react';
 import OtherPostsBlock from './OtherPostsBlock';
 import CommentsArticle from './CommentsArticle';

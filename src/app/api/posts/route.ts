@@ -1,10 +1,9 @@
 import { createPost, getAllPostsOf } from '@/service/post';
 import { NextRequest, NextResponse } from 'next/server';
 
+const userId = 'Darchive';
 export async function GET() {
-  return getAllPostsOf('hwisaac0@gmail.com').then((data) =>
-    NextResponse.json(data)
-  );
+  return getAllPostsOf(userId).then((data) => NextResponse.json(data));
 }
 type PostData = {
   title: string;

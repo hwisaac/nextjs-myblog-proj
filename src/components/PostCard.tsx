@@ -2,7 +2,6 @@
 import React from 'react';
 import TagCard from './TagCard';
 import IconComment from './icons/IconComment';
-import IconLike from './icons/IconLike';
 import UnderlineHeading from './ui/UnderlineHeading';
 import { IPost } from '@/service/post';
 import convertDateFormat from '@/utils/convertDateFormat';
@@ -16,10 +15,8 @@ const iconClassName = 'text-uRed';
 export default function PostCard({
   post: {
     title,
-    slug,
     postImage,
     createdAt,
-    updatedAt,
     commentsLength,
     description,
     tags,

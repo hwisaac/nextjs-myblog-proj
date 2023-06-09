@@ -7,6 +7,7 @@ export interface IUser {
   email: string;
   image?: string | null;
   posts: IPost[];
+  userId: string;
 }
 type OAuthUser = {
   id: string;

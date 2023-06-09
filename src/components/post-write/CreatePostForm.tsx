@@ -5,16 +5,12 @@ import RedButton from '@/components/ui/RedButton';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import ImageFileInput from './ImageFileInput';
 import usePosts from '@/hooks/usePosts';
-import { routeros } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useRouter } from 'next/navigation';
-
-type Props = {};
 
 const commonClassName =
   'w-full border bg-uBgColor border-uPrimary/5 outline-uRed p-2 text-uFontColor';
 
 const inputClassName = [commonClassName, ''].join(' ');
-
 const textareaClassName = [commonClassName, ''].join(' ');
 
 type Form = {
@@ -26,14 +22,9 @@ const DEFAULT_DATA = {
   title: '',
   content: '',
 };
-export interface BannerData {
-  message: string;
-  state: 'success' | 'error';
-}
 
-export default function CreatePostForm({}: Props) {
+export default function CreatePostForm() {
   const [form, setForm] = useState<Form>(DEFAULT_DATA);
-  const [banner, setBanner] = useState<BannerData | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [file, setFile] = useState<File>();
   const { addPost } = usePosts();
@@ -46,13 +37,8 @@ export default function CreatePostForm({}: Props) {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const postData = { ...form, tags };
-    console.log('addPost 작동!');
     addPost({ form, tags, file });
     router.push('/');
-    // .then(() => router.push('/'))
-    // .then(() => console.log('createPost 작동 종료'));
   };
 
   return (

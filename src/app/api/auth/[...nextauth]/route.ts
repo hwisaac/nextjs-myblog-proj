@@ -1,4 +1,3 @@
-import { getAllPostsOf } from '@/service/post';
 import { IUser, addUser } from '@/service/user';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';

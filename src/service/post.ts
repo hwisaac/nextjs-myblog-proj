@@ -44,18 +44,7 @@ export const dummyComment: IComment = {
   content: 'content ttttasdfasdf',
   _key: 'abcadsfef',
 };
-export const dummyPost: IPost = {
-  title: 'Top 10 old rock songs from the 80’s',
-  slug: 'slug-test',
-  postImage: '',
-  description:
-    'Music is an art form and cultural activity whose medium is sound organized in time. General definitions of music include common elements such as pitch (which governs melody and harmony), rhythm (and its associated concepts tempo, meter, and articulation), dynamics…',
-  tags: ['lifestyle', 'music'],
-  postId: 'post07',
-  createdAt: 'June 25, 2019',
-  updatedAt: 'July 26, 2019',
-  commentsLength: 3,
-};
+
 
 export async function getPostDetail(
   userId: string,
@@ -93,10 +82,10 @@ export async function getPostDetail(
     .catch((err) => console.error(err));
 }
 
-export async function getAllPostsOf(email?: string | null): Promise<IPost[]> {
-  if (!email) return [];
+export async function getAllPostsOf(userId?: string | null): Promise<IPost[]> {
+  if (!userId) return [];
   const GROQ = `
-  *[_type == "post"&& author->email=="${email}"]
+  *[_type == "post"&& author->_id=="${userId}"]
       | order(_createdAt desc){
       "title":title,
       "slug":slug,
