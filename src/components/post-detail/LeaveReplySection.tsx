@@ -33,6 +33,7 @@ export default function LeaveReplySection({ postId }: Props) {
   const onComment = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addComment(commentData);
+    setCommentData((prev) => ({ ...prev, content: '' })); 
   };
 
   return (

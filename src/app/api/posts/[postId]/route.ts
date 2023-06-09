@@ -19,5 +19,5 @@ export async function DELETE(_: NextRequest, context: Context) {
   const { postId } = context.params;
   console.log('api 라우트에서 postId 잘 들어왔나? ', postId);
   await deletePost(postId); //
-  return;
+  return NextResponse.json({ ok: true });
 }

@@ -22,7 +22,7 @@ export default function usePosts() {
   } = useSWR<IPost[]>('/api/posts');
 
   // 서버에 새로운 post 를 업데이트하기 + 임시데이터로 ui 즉각 업데이트
-  const updatePost = ({ form, tags = [], file }: TCreatePostParam) => {
+  const addPost = ({ form, tags = [], file }: TCreatePostParam) => {
     const { title, content } = form;
     const tempPostId = `temp-${new Date().getTime()}`;
 
@@ -55,7 +55,16 @@ export default function usePosts() {
     return;
   };
 
-  return { posts, isLoading, error, updatePost };
+  const removePost = (postId: string) => {
+    mutate(deletePost(postId), {
+      optimisticData: posts?.filter((post) => post.postId !== postId),
+      populateCache: false,
+      revalidate: false,
+      rollbackOnError: true,
+    });
+  };
+
+  return { posts, isLoading, error, addPost, removePost };
 }
 
 // 서버에 데이터를 보내는 함수
@@ -70,5 +79,11 @@ function postNewData({ form, tags, file }: TCreatePostParam) {
   return fetch('/api/posts', {
     method: 'POST',
     body: formData,
+  }).then((res) => res.json());
+}
+
+function deletePost(postId: string) {
+  return fetch(`/api/posts/${postId}`, {
+    method: 'DELETE',
   }).then((res) => res.json());
 }
