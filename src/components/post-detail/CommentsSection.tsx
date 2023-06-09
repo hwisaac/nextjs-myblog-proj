@@ -3,7 +3,6 @@ import { IComment } from '@/service/post';
 import React from 'react';
 import RedLineTitle from '../ui/RedLineTitle';
 import Comment from './Comment';
-import useComments from '@/hooks/useComments';
 import usePost from '@/hooks/usePost';
 
 type Props = { postId: string };

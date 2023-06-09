@@ -4,6 +4,7 @@ import React from 'react';
 import RedButton from '../ui/RedButton';
 import convertDateFormat from '@/utils/convertDateFormat';
 import IconClose from '../icons/IconClose';
+import usePost from '@/hooks/usePost';
 
 type Props = { comment: IComment; postId: string };
 
@@ -11,10 +12,9 @@ export default function Comment({
   comment: { name, password, content, _key, createdAt },
   postId,
 }: Props) {
+  const { removeComment } = usePost(postId);
   const onDeleteComment = () => {
-    fetch(`/api/posts/${postId}/comments/${_key}`, {
-      method: 'DELETE',
-    }).then(() => console.log('댓글삭제완료'));
+    removeComment(_key);
   };
   return (
     <div className='w-full flex flex-col py-5'>

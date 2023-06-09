@@ -1,6 +1,4 @@
 import { createPost, getAllPostsOf } from '@/service/post';
-import { withSessionUser } from '@/utils/session';
-
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {

@@ -2,12 +2,13 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import RedLineTitle from '../ui/RedLineTitle';
 import RedButton from '../ui/RedButton';
+import usePost from '@/hooks/usePost';
 
 type Props = {
   postId: string;
 };
 
-type PostData = {
+export type CommentData = {
   content: string;
   name: string;
   password: string;
@@ -20,22 +21,18 @@ const DEFAULT_DATA = {
 };
 
 export default function LeaveReplySection({ postId }: Props) {
-  const [postData, setPostData] = useState<PostData>(DEFAULT_DATA);
+  const { addComment } = usePost(postId);
+
+  const [commentData, setCommentData] = useState<CommentData>(DEFAULT_DATA);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setPostData((prev) => ({ ...prev, [name]: value }));
+    setCommentData((prev) => ({ ...prev, [name]: value }));
   };
 
   const onComment = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch(`/api/posts/${postId}/comments`, {
-      method: 'POST',
-      body: JSON.stringify({ postId, postData }),
-    })
-      .then((res) => console.log('패칭끝: res>>', res))
-      .catch((err) => console.error('에러발생', err));
+    addComment(commentData);
   };
 
   return (
@@ -46,7 +43,7 @@ export default function LeaveReplySection({ postId }: Props) {
           rows={3}
           className='bg-uBgColor border-fuchsia-200 border w-full  col-span-2 p-4 resize-none outline-uRed'
           placeholder='Comment'
-          value={postData.content}
+          value={commentData.content}
           name='content'
           onChange={onChange}
         />
@@ -54,7 +51,7 @@ export default function LeaveReplySection({ postId }: Props) {
           type='text'
           className='bg-uBgColor border-fuchsia-200 border w-full h-10 px-4 outline-uRed'
           placeholder='Name'
-          value={postData.name}
+          value={commentData.name}
           name='name'
           onChange={onChange}
         />
@@ -62,7 +59,7 @@ export default function LeaveReplySection({ postId }: Props) {
           type='password'
           className='bg-uBgColor border-fuchsia-200 border w-full h-10 px-4 outline-1 outline-uRed'
           placeholder='password'
-          value={postData.password}
+          value={commentData.password}
           name='password'
           onChange={onChange}
         />
