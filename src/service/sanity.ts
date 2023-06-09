@@ -6,7 +6,7 @@ const config: ClientConfig = {
   projectId: '6n5ee0tc',
   // dataset: process.env.SANITY_DATASET,
   dataset: 'production',
-  useCdn: true, // set to `true` to fetch from edge cache (동적 데이터라 캐싱안함)
+  useCdn: false, // set to `true` to fetch from edge cache (블로그는 정적사이트라서 캐싱)
   apiVersion: '2023-05-10', // use current date (YYYY-MM-DD) to target the latest API version
   token: process.env.SANITY_SECRET_TOKEN, // 데이터수정할거면 토큰 필요
 };
