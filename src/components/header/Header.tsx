@@ -2,10 +2,10 @@
 import React, { useEffect, useRef } from 'react';
 import SNSSection from './SNSSection';
 import BlogTitle from './BlogTitle';
-import SearchIcon from './SearchIcon';
 import NavBar from './NavBar';
 import TopNav from './TopNav';
 import { useInView } from 'framer-motion';
+import Account from './Account';
 
 type Props = {};
 
@@ -20,7 +20,7 @@ export default function Header({}: Props) {
         <div className='flex justify-center items-center relative'>
           <SNSSection />
           <BlogTitle />
-          <SearchIcon />
+          <Account />
         </div>
         <div className='relative' ref={ref}>
           <NavBar />
