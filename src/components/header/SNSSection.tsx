@@ -2,15 +2,18 @@ import Link from 'next/link';
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { MdRssFeed } from 'react-icons/md';
+import IconCreate from '../icons/IconCreate';
+import { useSession } from 'next-auth/react';
 type Props = {};
 
 const SNS_ICONS = [
   { icon: <FaFacebookF />, color: 'text-uFacebook' },
   { icon: <FaTwitter />, color: 'text-uTwitter' },
   { icon: <FaInstagram />, color: 'text-uInstagram' },
-  { icon: <MdRssFeed />, color: 'text-uFeed' },
 ];
 export default function SNSSection({}: Props) {
+  const { data: session } = useSession();
+
   return (
     <ul className='flex text-2xl gap-4 absolute left-0'>
       {SNS_ICONS.map((item, index) => (
@@ -20,13 +23,15 @@ export default function SNSSection({}: Props) {
           {item.icon}
         </li>
       ))}
-      <li>
-        <Link
-          href='/posts/create'
-          className='border rounded bg-yellow-500/60 active:text-red-500'>
-          Create
-        </Link>
-      </li>
+      {session?.user && (
+        <li>
+          <Link
+            href='/posts/create'
+            className='rounded text-uPrimary text-md active:text-red-500'>
+            <IconCreate className='text-uFeed' />
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }
