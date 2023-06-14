@@ -1,6 +1,6 @@
 'use client';
 import usePosts from '@/hooks/usePosts';
-import { IPostDetail, createPost, deletePost } from '@/service/post';
+import { IPostDetail } from '@/service/post';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 

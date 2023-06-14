@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react';
 
 export default function CustomMarkdownViewer({ content }: { content: string }) {
   const [text, setText] = useState<string>('');
+  
   useEffect(() => {
     setText(content);
   }, [content]);
+  
   return (
     <ReactMarkdown
       className='custom-markdown-style max-w-none'

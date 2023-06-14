@@ -8,7 +8,6 @@ import React from 'react';
 type Props = {};
 
 export default async function LoginPage({}: Props) {
-  const onSubmit = () => {};
   const session = await getServerSession(authOptions);
 
   if (session) {

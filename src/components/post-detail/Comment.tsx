@@ -1,7 +1,6 @@
 'use client';
 import { IComment } from '@/service/post';
 import React from 'react';
-import RedButton from '../ui/RedButton';
 import convertDateFormat from '@/utils/convertDateFormat';
 import IconClose from '../icons/IconClose';
 import usePost from '@/hooks/usePost';
@@ -10,7 +9,7 @@ import { useSession } from 'next-auth/react';
 type Props = { comment: IComment; postId: string };
 
 export default function Comment({
-  comment: { name, password, content, _key, createdAt },
+  comment: { name, content, _key, createdAt },
   postId,
 }: Props) {
   const { data: session } = useSession();
@@ -33,7 +32,7 @@ export default function Comment({
           <span>
             <IconClose
               className={`cursor-pointer bg-gray-100 hover:bg-gray-200 ${
-               hideClose && 'hidden'
+                hideClose && 'hidden'
               }`}
               size={20}
               onClick={onDeleteComment}

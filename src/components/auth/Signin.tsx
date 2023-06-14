@@ -10,7 +10,7 @@ export default function Signin({ providers }: Props) {
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
           <button onClick={() => signIn(provider.id)}>
-            Sign in with{provider.name}
+            Sign in with {provider.name}
           </button>
         </div>
       ))}

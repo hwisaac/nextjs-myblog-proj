@@ -1,13 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
-import OtherPostsBlock from './OtherPostsBlock';
+import React from 'react';
 import CommentsArticle from './CommentsArticle';
 import ActionBar from './ActionBar';
 import CategorySection from './CategorySection';
 import PostContent from './PostContent';
 import PostHead from './PostHead';
 import CoverImage from './CoverImage';
-import useSWR from 'swr';
 import usePost from '@/hooks/usePost';
 
 type Props = {
@@ -16,10 +14,6 @@ type Props = {
 
 export default function PostDetailBlock({ postId }: Props) {
   const { post } = usePost(postId);
-
-  useEffect(() => {
-    console.log(`postDetai에서 post(${postId}) : `, post);
-  }, [post, postId]);
 
   return (
     <>

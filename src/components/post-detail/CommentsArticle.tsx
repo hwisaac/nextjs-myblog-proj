@@ -1,4 +1,3 @@
-import { IComment } from '@/service/post';
 import React from 'react';
 import CommentsSection from './CommentsSection';
 import LeaveReplySection from './LeaveReplySection';
