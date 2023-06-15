@@ -197,9 +197,9 @@ export async function getComments(postId: string): Promise<IComment[]> {
 
 export async function postComment(
   postId: string,
-  postData: { content: string; name: string; password: string }
+  commentData: { content: string; name: string; password: string }
 ) {
-  const { content, name, password } = postData;
+  const { content, name, password } = commentData;
   return client
     .patch(postId)
     .setIfMissing({ comments: [] })
