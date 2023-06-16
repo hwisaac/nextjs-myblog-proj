@@ -6,7 +6,7 @@ type Context = {
 
 export async function DELETE(_: NextRequest, context: Context) {
   const { postId, key } = context.params;
-  console.log(`postId=${postId} / key=${key}`);
+
   await deleteComment(postId, key);
   return NextResponse.json({ ok: true });
 }
