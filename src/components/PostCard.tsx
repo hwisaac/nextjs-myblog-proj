@@ -38,10 +38,10 @@ export default function PostCard({
           {postImage && (
             <Image
               className='object-cover'
-              src={postImage}
               fill
-              alt={title}
               sizes='100px'
+              src={postImage}
+              alt={title}
             />
           )}
         </div>

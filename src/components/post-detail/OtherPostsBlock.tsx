@@ -1,14 +1,20 @@
+'use client';
 import React from 'react';
 import RedLineTitle from '../ui/RedLineTitle';
 import OtherPostCard from './OtherPostCard';
-import { IPost } from '@/service/post';
+import usePosts from '@/hooks/usePosts';
+import getOtherPosts from '@/utils/getOtherPosts';
 
 type Props = {
-  prevPost: IPost;
-  nextPost: IPost;
+  postId: string;
 };
 
-export default function OtherPostsBlock({ nextPost, prevPost }: Props) {
+export default function OtherPostsBlock({ postId }: Props) {
+  const { posts } = usePosts();
+  if (!posts) return null;
+
+  const [prevPost, nextPost] = getOtherPosts(postId, posts);
+
   return (
     <section className='flex flex-col w-full max-w-4xl mx-4 py-20'>
       <RedLineTitle title='Other Posts' size='large' />
