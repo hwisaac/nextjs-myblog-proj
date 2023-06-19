@@ -1,11 +1,3 @@
-export function colors(color: string) {
-  return {
-    bg: `bg-${color}`,
-    text: `text-${color}`,
-    border: `border-${color}`,
-  };
-}
-
 export class MyColors {
   private bg: string;
   private text: string;
@@ -49,4 +41,3 @@ export class MyColors {
     };
   }
 }
-

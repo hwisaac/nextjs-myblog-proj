@@ -1,11 +1,9 @@
 import React from 'react';
-import { colors } from '@/utils/color';
 import { ISNS } from './FollowMeBlock';
 
 type Props = { sns: ISNS };
 
 export default function SNSCard({ sns }: Props) {
-  const color = colors(sns.color);
   const { instance } = sns;
   return (
     <div

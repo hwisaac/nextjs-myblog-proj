@@ -3,7 +3,7 @@ import GridSectionBlock from './footer/GridSectionBlock';
 import SNSCard from './SNSCard';
 import IconFeed from './icons/IconFeed';
 import IconInstagram from './icons/IconInstagram';
-import { MyColors } from '@/utils/color';
+import { MyColors } from '@/utils/MyColor';
 import IconFacebook from './icons/IconFacebook';
 import IconTwitter from './icons/IconTwitter';
 

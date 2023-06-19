@@ -4,7 +4,7 @@ import IconTwitter from '../icons/IconTwitter';
 import IconFacebook from '../icons/IconFacebook';
 import IconInstagram from '../icons/IconInstagram';
 import IconFeed from '../icons/IconFeed';
-import { MyColors } from '@/utils/color';
+import { MyColors } from '@/utils/MyColor';
 import LatestArticlesBlock from '../LatestArticlesBlock';
 import TagCloudBlock from '../TagCloudBlock';
 import FollowMeBlock from '../FollowMeBlock';
