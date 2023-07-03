@@ -3,6 +3,7 @@ import React from 'react';
 import IconTwitter from '../icons/IconTwitter';
 import IconFacebook from '../icons/IconFacebook';
 import PortalKV from '../PortalKV';
+import Image from 'next/image';
 
 type Props = {};
 
@@ -13,7 +14,9 @@ export default function MeWithPortal({}: Props) {
         <div className='flex items-center gap-4 '>
           <div
             className='w-16 h-16 bg-gray-200 rounded-full'
-            id='my-profile-image'></div>
+            id='my-profile-image'>
+            {/* <Image /> */}
+          </div>
           <div className='flex flex-col gap-1 items-center'>
             <span className='text-uPrimary font-bold text-2xl'>황이삭</span>
             <span className='text-uFontColor text-sm'>FE Developer</span>

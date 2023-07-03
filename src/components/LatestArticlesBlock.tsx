@@ -9,7 +9,6 @@ type Props = {};
 
 export default function LatestArticlesBlock() {
   const { posts } = usePosts();
-
   return (
     <GridSectionBlock title='Latest Articles'>
       <div className='w-full flex flex-col justify-between gap-4'>
