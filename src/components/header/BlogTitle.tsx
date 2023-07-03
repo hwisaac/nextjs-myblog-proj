@@ -6,7 +6,7 @@ type Props = { size?: 'normal' | 'small' };
 export default function BlogTitle({ size = 'normal' }: Props) {
   return (
     <Link href='/' className={styleBySize(size)}>
-      Maktub
+      My Blog
     </Link>
   );
 }
